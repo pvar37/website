@@ -1,0 +1,87 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@8.19.2
+2 info using node@v16.18.1
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 0ms
+6 timing config:load:builtin Completed in 0ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:project Completed in 44ms
+10 timing config:load:file:/home/cloudshell-user/.npmrc Completed in 0ms
+11 timing config:load:user Completed in 0ms
+12 timing config:load:file:/usr/etc/npmrc Completed in 0ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:validate Completed in 0ms
+15 timing config:load:credentials Completed in 0ms
+16 timing config:load:setEnvs Completed in 1ms
+17 timing config:load Completed in 51ms
+18 timing npm:load:configload Completed in 51ms
+19 timing npm:load:mkdirpcache Completed in 1ms
+20 timing npm:load:mkdirplogs Completed in 0ms
+21 verbose title npm install npm@9.2.0
+22 verbose argv "install" "--global" "npm@9.2.0"
+23 timing npm:load:setTitle Completed in 1ms
+24 timing config:load:flatten Completed in 2ms
+25 timing npm:load:display Completed in 4ms
+26 verbose logfile logs-max:10 dir:/home/cloudshell-user/.npm/_logs
+27 verbose logfile /home/cloudshell-user/.npm/_logs/2023-01-01T17_15_01_695Z-debug-0.log
+28 timing npm:load:logFile Completed in 4ms
+29 timing npm:load:timers Completed in 0ms
+30 timing npm:load:configScope Completed in 0ms
+31 timing npm:load Completed in 62ms
+32 silly logfile done cleaning log files
+33 http fetch GET 200 https://registry.npmjs.org/npm 20ms (cache hit)
+34 timing arborist:ctor Completed in 0ms
+35 timing idealTree:init Completed in 4ms
+36 timing idealTree:userRequests Completed in 1ms
+37 silly idealTree buildDeps
+38 silly fetch manifest npm@9.2.0
+39 http fetch GET 200 https://registry.npmjs.org/npm 9ms (cache hit)
+40 silly placeDep ROOT npm@9.2.0 OK for:  want: 9.2.0
+41 timing idealTree:#root Completed in 79ms
+42 timing idealTree:node_modules/npm Completed in 0ms
+43 timing idealTree:buildDeps Completed in 80ms
+44 timing idealTree:fixDepFlags Completed in 1ms
+45 timing idealTree Completed in 87ms
+46 timing reify:loadTrees Completed in 405ms
+47 timing reify:diffTrees Completed in 3ms
+48 silly reify mark retired [ '/usr/lib/node_modules/npm', '/usr/bin/npm', '/usr/bin/npx' ]
+49 silly reify moves {
+49 silly reify   '/usr/lib/node_modules/npm': '/usr/lib/node_modules/.npm-qUIFSsiV',
+49 silly reify   '/usr/bin/npm': '/usr/bin/.npm-CxSgn0z2',
+49 silly reify   '/usr/bin/npx': '/usr/bin/.npx-akSQqeWh'
+49 silly reify }
+50 timing reify:rollback:retireShallow Completed in 1ms
+51 timing command:install Completed in 516ms
+52 verbose stack Error: EACCES: permission denied, rename '/usr/lib/node_modules/npm' -> '/usr/lib/node_modules/.npm-qUIFSsiV'
+53 verbose cwd /home/cloudshell-user
+54 verbose Linux 4.14.255-291-231.527.amzn2.x86_64
+55 verbose node v16.18.1
+56 verbose npm  v8.19.2
+57 error code EACCES
+58 error syscall rename
+59 error path /usr/lib/node_modules/npm
+60 error dest /usr/lib/node_modules/.npm-qUIFSsiV
+61 error errno -13
+62 error [Error: EACCES: permission denied, rename '/usr/lib/node_modules/npm' -> '/usr/lib/node_modules/.npm-qUIFSsiV'] {
+62 error   errno: -13,
+62 error   code: 'EACCES',
+62 error   syscall: 'rename',
+62 error   path: '/usr/lib/node_modules/npm',
+62 error   dest: '/usr/lib/node_modules/.npm-qUIFSsiV'
+62 error }
+63 error
+63 error The operation was rejected by your operating system.
+63 error It is likely you do not have the permissions to access this file as the current user
+63 error
+63 error If you believe this might be a permissions issue, please double-check the
+63 error permissions of the file and its containing directories, or try running
+63 error the command again as root/Administrator.
+64 verbose exit -13
+65 timing npm Completed in 681ms
+66 verbose unfinished npm timer reify 1672593301944
+67 verbose unfinished npm timer reify:retireShallow 1672593302367
+68 verbose code -13
+69 error A complete log of this run can be found in:
+69 error     /home/cloudshell-user/.npm/_logs/2023-01-01T17_15_01_695Z-debug-0.log

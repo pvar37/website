@@ -1,0 +1,58 @@
+0 verbose cli /usr/bin/node /usr/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@8.19.2
+2 info using node@v16.18.1
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:project Completed in 9ms
+10 timing config:load:file:/home/cloudshell-user/.npmrc Completed in 1ms
+11 timing config:load:user Completed in 1ms
+12 timing config:load:file:/usr/etc/npmrc Completed in 0ms
+13 timing config:load:global Completed in 0ms
+14 timing config:load:validate Completed in 0ms
+15 timing config:load:credentials Completed in 2ms
+16 timing config:load:setEnvs Completed in 1ms
+17 timing config:load Completed in 55ms
+18 timing npm:load:configload Completed in 55ms
+19 timing npm:load:mkdirpcache Completed in 4ms
+20 timing npm:load:mkdirplogs Completed in 1ms
+21 verbose title npm exec create-react-app amplifyapp
+22 verbose argv "exec" "--" "create-react-app" "amplifyapp"
+23 timing npm:load:setTitle Completed in 1ms
+24 timing config:load:flatten Completed in 2ms
+25 timing npm:load:display Completed in 3ms
+26 verbose logfile logs-max:10 dir:/home/cloudshell-user/.npm/_logs
+27 verbose logfile /home/cloudshell-user/.npm/_logs/2023-01-01T17_14_20_487Z-debug-0.log
+28 timing npm:load:logFile Completed in 4ms
+29 timing npm:load:timers Completed in 0ms
+30 timing npm:load:configScope Completed in 0ms
+31 timing npm:load Completed in 69ms
+32 silly logfile done cleaning log files
+33 timing arborist:ctor Completed in 0ms
+34 http fetch GET 200 https://registry.npmjs.org/npm 296ms (cache miss)
+35 http fetch GET 200 https://registry.npmjs.org/create-react-app 331ms (cache miss)
+36 timing arborist:ctor Completed in 0ms
+37 timing arborist:ctor Completed in 0ms
+38 timing command:exec Completed in 773ms
+39 notice
+39 notice New [31mmajor[39m version of npm available! [31m8.19.2[39m -> [32m9.2.0[39m
+39 notice Changelog: [36mhttps://github.com/npm/cli/releases/tag/v9.2.0[39m
+39 notice Run [32mnpm install -g npm@9.2.0[39m to update!
+39 notice
+40 verbose stack Error: canceled
+40 verbose stack     at exec (/usr/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:248:19)
+40 verbose stack     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+40 verbose stack     at async module.exports (/usr/lib/node_modules/npm/lib/cli.js:78:5)
+41 verbose cwd /home/cloudshell-user
+42 verbose Linux 4.14.255-291-231.527.amzn2.x86_64
+43 verbose node v16.18.1
+44 verbose npm  v8.19.2
+45 error canceled
+46 verbose exit 1
+47 timing npm Completed in 960ms
+48 verbose code 1
+49 error A complete log of this run can be found in:
+49 error     /home/cloudshell-user/.npm/_logs/2023-01-01T17_14_20_487Z-debug-0.log

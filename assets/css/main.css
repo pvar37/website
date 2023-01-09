@@ -85,7 +85,7 @@ input, select, textarea {
 
 	body {
 		background: #000;
-		background-image: url("images/bg02.png");
+		background-image: url("images/bg.png");
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2312,7 +2312,7 @@ input, select, textarea {
 
 	#main {
 		position: relative;
-		background: #000041 url("images/bg02.png");
+		background: #000041 url("images/bg.png");
 		padding: 4em 0 4em 0;
 	}
 
@@ -2322,14 +2322,14 @@ input, select, textarea {
 			top: 0;
 			left: 0;
 			width: 100%;
-			background: url("images/bg01.png");
+			background: url("images/bg.png");
 			background-size: 100% 100%;
 			z-index: 0;
 			opacity: 0.1;
 		}
 
 		#main .major h2 {
-			background: #000041 url("images/bg02.png");
+			background: #000041 url("images/bg.png");
 		}
 
 /* Footer */
@@ -2346,7 +2346,7 @@ input, select, textarea {
 			top: 0;
 			left: 0;
 			width: 100%;
-			background: url("images/bg01.png");
+			background: url("images/bg.png");
 			background-size: 100% 100%;
 			z-index: 0;
 			opacity: 0.5;
@@ -2677,7 +2677,7 @@ input, select, textarea {
 				width: 275px;
 				z-index: 10002;
 				color: #858484;
-				background-image: url("images/bg02.png");
+				background-image: url("images/bg.png");
 				box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.35);
 			}
 

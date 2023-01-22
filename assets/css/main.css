@@ -1914,7 +1914,6 @@ input, select, textarea {
 		padding-left: 0;
 		overflow: hidden;
 		cursor: default;
-		margin: 0 0 3.25em 0;
 	}
 
 		ul.social li {
@@ -2383,7 +2382,6 @@ input, select, textarea {
 
 	#copyright {
 		text-align: center;
-		margin: 3em 0 2em 0;
 	}
 
 		#copyright ul.links {

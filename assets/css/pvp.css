@@ -100,7 +100,7 @@ input, select, textarea {
 	}
 
 	body, input, select, textarea {
-		color: rgba(255, 255, 255, 0.75);
+		color: rgba(255, 255, 255, 0.95);
 		font-family: "Inconsolata";
 		font-size: 15pt;
 		font-weight: 100;
@@ -112,15 +112,18 @@ input, select, textarea {
 		-webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		border-bottom: dotted 1px;
 		color: #e44c65;
 		text-decoration: none;
 	}
 
 		a:hover {
 			color: #e44c65 !important;
-			border-bottom-color: transparent;
+			border-bottom: solid 1px;
 		}
+
+		.anchor {       
+			scroll-margin-top: 90px;
+		 }
 
 	strong, b {
 		color: #ffffff;
@@ -132,7 +135,8 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 1.4em 0;
+		font-size: 1.1em;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -155,7 +159,7 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 1.35em;
+		font-size: 1.5em;
 		line-height: 1.5em;
 	}
 
@@ -637,7 +641,7 @@ input, select, textarea {
 
 	.container {
 		margin: 0 auto;
-		max-width: 1200px;
+		max-width: 1000px;
 		width: 70em;
 	}
 
@@ -2536,6 +2540,14 @@ input, select, textarea {
 		overflow: hidden;
 	}
 
+	.smallerimg {
+		object-fit: cover;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 10px
+	}
+
 		.image:before {
 			content: '';
 			display: block;
@@ -3142,7 +3154,7 @@ input, select, textarea {
 
 		.spotlight.left .content, .spotlight.right .content {
 			height: 101%;
-			padding: 6em 3em;
+			padding: 15em 3em;
 			top: 0;
 			width: 28em;
 		}
@@ -3416,6 +3428,11 @@ input, select, textarea {
 			font-weight: 700;
 			font-size: 30px;
 		}
+		
+			#header h1 a:hover {
+				color: inherit !important;
+				border-bottom: none;
+			}
 
 		#header nav {
 			position: absolute;
@@ -3494,7 +3511,7 @@ input, select, textarea {
 
 		#banner:after {
 			background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
-			background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
+			background-image: -webkit-linear-gradient(top, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), url("images/overlay.png");;
 			background-image: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
 			background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
 			content: '';
@@ -3555,7 +3572,7 @@ input, select, textarea {
 
 	#footer {
 		background: #272833;
-		padding: 1em 0 2.6em 0;
+		padding: 2.5em 0 2.5em 0;
 		text-align: center;
 	}
 
@@ -3585,7 +3602,7 @@ input, select, textarea {
 			color: rgba(255, 255, 255, 0.5);
 			font-size: 0.8em;
 			line-height: 1em;
-			margin: 2em 0 0 0;
+			margin: 0;
 			padding: 0;
 			text-align: center;
 		}
@@ -3641,7 +3658,7 @@ input, select, textarea {
 			}
 
 			.spotlight.left .content, .spotlight.right .content {
-				padding: 6.5em 2.5em;
+				padding: 18em 2.5em;
 				width: 25em;
 			}
 
@@ -3784,11 +3801,11 @@ input, select, textarea {
 				}
 
 				h2 {
-					font-size: 1.5em;
+					font-size: 1.8em;
 				}
 
 				h3 {
-					font-size: 1.2em;
+					font-size: 1.5em;
 				}
 
 				h4 {
@@ -3797,12 +3814,12 @@ input, select, textarea {
 
 			/* Section/Article */
 
-				header p br {
+				/* header p br {
 					display: none;
-				}
+				} */
 
 				header h2 + p {
-					font-size: 1em;
+					font-size: 1.3em;
 				}
 
 				header h3 + p {
@@ -3827,6 +3844,12 @@ input, select, textarea {
 					width: 1.2em;
 				}
 
+			/* Smaller Images */
+
+				.smallerimg {
+					width: 100% !important;
+				}
+				
 			/* Spotlight */
 
 				.spotlight {
@@ -3870,7 +3893,7 @@ input, select, textarea {
 					}
 
 						#banner .content header h2 {
-							font-size: 1.5em;
+							font-size: 2em;
 						}
 
 						#banner .content .image {
@@ -3890,7 +3913,7 @@ input, select, textarea {
 					-ms-transition: -ms-transform 0.5s ease;
 					transition: transform 0.5s ease;
 					padding-bottom: 1px;
-					padding-top: 44px !important;
+					padding-top: 60px !important;
 				}
 
 				#titleBar {
@@ -3903,7 +3926,7 @@ input, select, textarea {
 					-ms-transition: -ms-transform 0.5s ease;
 					transition: transform 0.5s ease;
 					display: block;
-					height: 44px;
+					height: 60px;
 					left: 0;
 					position: fixed;
 					top: 0;
@@ -3917,14 +3940,17 @@ input, select, textarea {
 						color: #ffffff;
 						display: block;
 						font-weight: 300;
-						height: 44px;
-						line-height: 44px;
+						height: 60px;
+						line-height: 60px;
 						text-align: center;
 					}
 
 						#titleBar .title a {
-							color: inherit;
+							color: #fff01f;
 							border: 0;
+							font-family: 'Barlow' !important;
+							font-weight: 700;
+							font-size: 24px;
 						}
 
 					#titleBar .toggle {
@@ -3952,18 +3978,18 @@ input, select, textarea {
 						}
 
 						#titleBar .toggle:before {
-							background: #e44c65;
-							color: rgba(255, 255, 255, 0.5);
+							background: #fff01f;
+							color: rgba(0, 0, 0, 0.5);
 							content: '\f0c9';
 							display: block;
 							font-size: 18px;
-							height: 44px;
+							height: 60px;
 							left: 0;
-							line-height: 44px;
+							line-height: 60px;
 							position: absolute;
 							text-align: center;
 							top: 0;
-							width: 54px;
+							width: 60px;
 						}
 
 				#navPanel {
@@ -3971,10 +3997,10 @@ input, select, textarea {
 					-webkit-backface-visibility: hidden;
 					-ms-backface-visibility: hidden;
 					backface-visibility: hidden;
-					-moz-transform: translateX(-275px);
-					-webkit-transform: translateX(-275px);
-					-ms-transform: translateX(-275px);
-					transform: translateX(-275px);
+					-moz-transform: translateX(-300px);
+					-webkit-transform: translateX(-300px);
+					-ms-transform: translateX(-300px);
+					transform: translateX(-300px);
 					-moz-transition: -moz-transform 0.5s ease;
 					-webkit-transition: -webkit-transform 0.5s ease;
 					-ms-transition: -ms-transform 0.5s ease;
@@ -3985,7 +4011,7 @@ input, select, textarea {
 					overflow-y: auto;
 					position: fixed;
 					top: 0;
-					width: 275px;
+					width: 300px;
 					z-index: 10002;
 					background: #181920;
 					padding: 0.75em 1.25em;
@@ -4040,17 +4066,17 @@ input, select, textarea {
 						}
 
 				body.navPanel-visible #page-wrapper {
-					-moz-transform: translateX(275px);
-					-webkit-transform: translateX(275px);
-					-ms-transform: translateX(275px);
-					transform: translateX(275px);
+					-moz-transform: translateX(300px);
+					-webkit-transform: translateX(300px);
+					-ms-transform: translateX(300px);
+					transform: translateX(300px);
 				}
 
 				body.navPanel-visible #titleBar {
-					-moz-transform: translateX(275px);
-					-webkit-transform: translateX(275px);
-					-ms-transform: translateX(275px);
-					transform: translateX(275px);
+					-moz-transform: translateX(300px);
+					-webkit-transform: translateX(300px);
+					-ms-transform: translateX(300px);
+					transform: translateX(300px);
 				}
 
 				body.navPanel-visible #navPanel {
@@ -4116,7 +4142,7 @@ input, select, textarea {
 			/* Footer */
 
 				#footer {
-					padding: 3em 1.25em;
+					padding: 1.25em 1.25em;
 				}
 
 					#footer .copyright {

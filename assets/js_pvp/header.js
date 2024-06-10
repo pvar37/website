@@ -15,12 +15,14 @@ document.write('\
                                 <li><a href="land-of-the-setting-sun.html#ends">III. THE ENDS OF THE EARTH</a></li>\
                             </ul>\
                         </li>\
+                        <li><a href="moldova-3-poland-2.html">MOLDOVA 3, POLAND 2</a></li>\
                     </ul>\
                 </li>\
                 <li>\
                     <a href="#">DISPATCHES</a>\
                     <ul>\
                         <li><a href="speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
+                        <li><a href="predicting-euro-2024.html">PREDICTING EURO 2024</a></li>\
                     </ul>\
                 </li>\
                 <li><a href="what.html">WHAT</a></li>\
@@ -28,6 +30,3 @@ document.write('\
         </nav>\
     </header>\
 ');
-
-/* <li><a href="moldova-3-poland-2.html">MOLDOVA 3, POLAND 2</a></li>\
-<li><a href="predicting-euro-2024.html">PREDICTING EURO 2024</a></li>\ */

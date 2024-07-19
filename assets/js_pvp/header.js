@@ -21,8 +21,9 @@ document.write('\
                 <li>\
                     <a href="#">DISPATCHES</a>\
                     <ul>\
-                        <li><a href="speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
+                        <li><a href="recapping-euro-2024.html">RECAPPING EURO 2024</a></li>\
                         <li><a href="predicting-euro-2024.html">PREDICTING EURO 2024</a></li>\
+                        <li><a href="speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
                     </ul>\
                 </li>\
                 <li><a href="what.html">WHAT</a></li>\

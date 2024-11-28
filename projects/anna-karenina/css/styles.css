@@ -1,0 +1,13 @@
+body {
+    /* background-color: #240101; */
+    background-color: #222222;
+}
+
+h2 {
+    color: white;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}

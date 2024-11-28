@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anna Karenina</title>
+
+    <!-- CSS libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="padding: 1vh">
+<div class="container-fluid" style="height: 98vh;">
+
+    <!-- header row -->
+    <div class="row" style="height: 6vh;">
+        <div class="col text-center d-flex justify-content-center align-items-center">
+            <h2>Network Analysis of Anna Karenina</h2>
+        </div>
+    </div>
+
+    <!-- configs row -->
+    <div class="row" style="height: 10vh">
+        <div class="col-3"></div>
+        <div class="col-6 header">
+            <select id="partChoice" class="form-select" onchange="network.wrangleData()" style="width: 35%; margin-left: 7.5%;">
+                <option value="1">Part 1</option>
+                <option value="2">Part 2</option>
+                <option value="3">Part 3</option>
+                <option value="4">Part 4</option>
+                <option value="5">Part 5</option>
+                <option value="6">Part 6</option>
+                <option value="7">Part 7</option>
+                <option value="8">Part 8</option>
+            </select>
+            <select id="variableChoice" class="form-select" onchange="network.wrangleData()" style="width: 35%; margin-left: 15%;">
+                <option value="default">Overall score</option>
+                <option value="anger">Anger</option>
+                <option value="anticipation">Anticipation</option>
+                <option value="disgust">Disgust</option>
+                <option value="fear">Fear</option>
+                <option value="joy">Joy</option>
+                <option value="sadness">Sadness</option>
+                <option value="surprise">Surprise</option>
+                <option value="trust">Trust</option>
+            </select>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+
+    <div class="row" style="height: 82vh;">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="row" id="mainVisContainer" style="height: 82vh"></div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/network.js"></script>
+
+</body>
+</html>

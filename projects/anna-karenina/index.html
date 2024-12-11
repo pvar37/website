@@ -9,59 +9,251 @@
     <!-- CSS libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/fullpage.css">
+    <link rel="icon" type="image/x-icon" href="../assets/mgweb.png">
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELB9NNSQXG"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-ELB9NNSQXG');
+		</script>
 </head>
-<body style="padding: 1vh">
-<div class="container-fluid" style="height: 98vh;">
+<body>
+<div class="container-fluid fullpage" id="fullpage" style="padding: 0;">
 
-    <!-- header row -->
-    <div class="row" style="height: 6vh;">
-        <div class="col text-center d-flex justify-content-center align-items-center">
-            <h2>Network Analysis of Anna Karenina</h2>
+    <div class="section section-active" data-anchor="intro" style="background-color: rgb(96, 1, 1);">
+        <!-- header row -->
+        <div class="row" style="padding-bottom: 2vh;">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
+                <h2>A network analysis of <i>Anna Karenina</i></h2>
+                <p>Pranay Varada | Slavic 132</p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
+        </div>
+        <div class="row" style="margin-bottom: 2vh;">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8" style="line-height: 1.5em;">
+                <p>Leo Tolstoy's <i>Anna Karenina</i> is regarded as one of the greatest novels in the history of literature,
+                    if not simply the greatest.</p>
+                <p>One of its most renowned characteristics is its intricate depictions of relationships,
+                    eloquently capturing the minute elements of social interactions and character development.</p>
+                <p>This is a social-emotional network analysis of the relationships between <i>Anna Karenina</i>'s seven major characters,
+                traced through the eight parts of the novel.</p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
+        </div>
+        <div class="row"">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8" style="line-height: 1.5em;">
+                <p style="text-align: right"><a href="#visualization">Visualization</a> | <a href="#methodology">Methodology</a> | <a href="#analysis">Analysis</a></p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
         </div>
     </div>
 
-    <!-- configs row -->
-    <div class="row" style="height: 10vh">
-        <div class="col-3"></div>
-        <div class="col-6 header">
-            <select id="partChoice" class="form-select" onchange="network.wrangleData()" style="width: 35%; margin-left: 7.5%;">
-                <option value="1">Part 1</option>
-                <option value="2">Part 2</option>
-                <option value="3">Part 3</option>
-                <option value="4">Part 4</option>
-                <option value="5">Part 5</option>
-                <option value="6">Part 6</option>
-                <option value="7">Part 7</option>
-                <option value="8">Part 8</option>
-            </select>
-            <select id="variableChoice" class="form-select" onchange="network.wrangleData()" style="width: 35%; margin-left: 15%;">
-                <option value="default">Overall score</option>
-                <option value="anger">Anger</option>
-                <option value="anticipation">Anticipation</option>
-                <option value="disgust">Disgust</option>
-                <option value="fear">Fear</option>
-                <option value="joy">Joy</option>
-                <option value="sadness">Sadness</option>
-                <option value="surprise">Surprise</option>
-                <option value="trust">Trust</option>
-            </select>
+    <div class="section" data-anchor="visualization">
+        <div class="row">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8 text-center justify-content-center align-items-center">
+                <h2>The Social-Emotional Network of <i>Anna Karenina</i></h2>
+                <p>Select a part of the novel and emotional metric to visualize the interactions between each pair of characters.</p>
+                <p>The thicker a line is between two characters, the more they interact in the selected part (min. 500 words).
+                    <span style="color: red; font-weight: 500;">Negative</span> emotions are represented with a red color scale, <span style="color: green; font-weight: 500;">positive</span> or neutral emotions with a green color scale, and overall sentiment with both.</p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
         </div>
-        <div class="col-3"></div>
+        <!-- configs row -->
+        <div class="row" style="margin-top: 2vh; margin-bottom: 2vh;">
+            <div class="col-2 col-lg-3"></div>
+            <div class="col-4 col-lg-3 header">
+                <select id="partChoice" class="form-select" onchange="network.wrangleData()">
+                    <option value="all">Full novel</option>
+                    <option value="1">Part 1</option>
+                    <option value="2">Part 2</option>
+                    <option value="3">Part 3</option>
+                    <option value="4">Part 4</option>
+                    <option value="5">Part 5</option>
+                    <option value="6">Part 6</option>
+                    <option value="7">Part 7</option>
+                    <option value="8">Part 8</option>
+                </select>
+            </div>
+            <div class="col-4 col-lg-3 header">
+                <select id="variableChoice" class="form-select" onchange="network.wrangleData()">
+                    <option value="default">Overall sentiment</option>
+                    <option value="anger">Anger</option>
+                    <option value="anticipation">Anticipation</option>
+                    <option value="disgust">Disgust</option>
+                    <option value="fear">Fear</option>
+                    <option value="joy">Joy</option>
+                    <option value="sadness">Sadness</option>
+                    <option value="surprise">Surprise</option>
+                    <option value="trust">Trust</option>
+                </select>
+            </div>
+            <div class="col-2 col-lg-3"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
+                <div class="row" id="mainVisContainer" style="height: 60vh;"></div>
+            </div>
+            <div class="col-1 col-lg-2"></div>
+        </div>
     </div>
 
-
-    <div class="row" style="height: 82vh;">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <div class="row" id="mainVisContainer" style="height: 82vh"></div>
+    <div class="section" data-anchor="methodology" style="padding: 5vh 0 5vh 0; background: rgb(96, 1, 1);">
+        <div class="row">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
+                <h2>Methodology</i></h2>
+                <p>
+                    I began the process of working toward a relationship sentiment analysis by taking a digitized version of the novel and using regular expressions to segment it into sentences or small groups of sentences.
+                    With <i>Anna Karenina</i> being quite a long novel – over 800 pages in the Pevear and Volokhonsky translation – there were 15,920 of these sentences, spread out over eight parts.
+                    I created a <a href="https://docs.google.com/spreadsheets/d/1xVQEHU5M-HlvXREH0ID4lXAQjW2pLCQZIQV1cakBzC8/edit?usp=sharing" target="_blank">spreadsheet</a> to classify each sentence as being part of an interaction or describing a relationship between two of the novel’s seven main characters: the titular Anna, her lover Vronsky, her husband Karenin, her brother Stiva, Stiva's wife Dolly, Dolly’s sister Kitty, and Stiva’s friend Levin.
+                    Over the course of the novel, almost every pair of these characters has an interaction with one another.
+                </p>
+                <p>
+                    In the classification process, I looked for passages where two characters were in dialogue or their relationship (romantic, friendly, or otherwise) was being discussed by the narrator or other characters.
+                    I found 5,995 sentences that fit these criteria, with the most detailed relationships being Anna-Vronsky (34,700 words) and Levin-Kitty (29,790).
+                    This process essentially yielded 75 excerpts from the novel, each of which corresponded to a specific relationship between two major characters in a specific part (1-8) of the novel.
+                </p>
+                <p>
+                    Within each of these excerpts, I performed <a href="https://www.vanderbilt.edu/digitalhumanities/on-sentiment-analysis-and-transformative-methods-in-digital-humanities" target="_blank">sentiment analysis</a> to quantify the emotional intensity of each relationship across several dimensions.
+                    I emulated the approach documented <a href="https://towardsdatascience.com/basic-nlp-on-the-texts-of-harry-potter-sentiment-analysis-1b474b13651d" target="_blank">here</a>, which analyzed the emotional sentiment of the <i>Harry Potter</i> novels.
+                    To bridge the gap between words and emotions, I used the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" target="_blank">Word-Emotion Association Lexicon</a>, published by the National Research Council of Canada, which scores over 14,000 unique words as being associated or not associated with positive and negative sentiment as well as eight key emotions: anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.
+                    I developed a program in Python to apply this lexicon to each of the relationship-part excerpts, such that I calculated the number of words associated with each of these ten dimensions for each excerpt.
+                    I divided these totals by the length of each excerpt to yield a set of emotional sentiment scores that could be compared across different relationships and different parts of the novel.
+                </p>
+                <p>
+                    After obtaining the scores across each relationship in each part, I built the network visualization above using the D3 Javascript library.
+                    The thickness of each line is proportional to the word count of the relevant interaction.
+                    If one of the eight emotions is selected, the intensity of the color reflects the proportion of words in the interaction that are associated with that emotion; meanwhile, “overall positivity” is calculated as the proportion of words associated with positivity minus the proportion of words associated with negativity.
+                </p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
         </div>
-        <div class="col-2"></div>
+    </div>
+    <div class="section" data-anchor="analysis" style="padding: 5vh 0 5vh 0;">
+        <div class="row">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
+                <h2>Analysis</h2>
+                <h4>The Anna-Vronsky relationship</h4>
+                <p>
+                    The plot below shows the trajectories of each emotion or sentiment in the Anna-Vronsky relationship over the seven parts of <i>Anna Karenina</i> in which it is present.
+                    To compare all ten emotions and sentiments, all scores are expressed as a percentage of Part One scores (e.g. sadness in Part Two is about 200% of sadness in Part One, or twice as high).
+                </p>
+                <img src="assets/av.png" width="100%" style="max-width: 800px;">
+                <p style="margin-top: 1rem;">
+                    The first signs of trouble in the Anna-Vronsky relationship appear in Part Two, with notably sharp increases in disgust, fear, sadness, and anger.
+                    The consummation scene is a particularly strong example of the negative verbiage that begins to define the relationship, even at this relatively early stage of the novel:
+                </p>
+                <p style="margin-bottom: 0;"><i>But, despite all the murderer’s horror before the murdered body, he had to cut this body into pieces and hide it, he had to make use of what the murderer had gained by his murder.</i></p>
+                <p style="text-align: right">- Part Two, Chapter XI</p>
+                <p>
+                    The consummation scene marks a turning point in the novel, as the realization of what Vronsky has done dawns on him, and the consequences of such an improper relationship become apparent for both characters.
+                    The Anna-Vronsky story takes a backseat to the Levin plotline in Part Three, but the emotional content in Part Four is not substantially different.
+                    After all, this part sees the first appearance of the muzhik dream, an increase in Anna’s fits of jealousy, and Vronsky’s humiliation in the childbirth scene.
+                    There seems to be an improvement in the relationship in Part Five, when Anna and Vronsky go to Italy and are in generally good spirits.
+                    Positive sentiment, trust, and joy all increase, nearly to their levels in Part One.
+                </p>
+                <p>
+                    However, there is no question that Part Seven sees a complete disintegration of the Anna-Vronsky relationship.
+                    While Anna’s suicide at the end of this part is the culmination of the relationship, the lexicon clearly picks up on the emotional degradation of dialogue in the buildup, with scores for all negative emotions increasing and all positive emotions declining.
+                    These are not just subtle increases, but sharp spikes, demonstrating that although hints of anger, disgust, and fear have tormented the Anna-Vronsky relationship for a long time, only in this part do they come to dominate proceedings.
+                </p>
+                <p>
+                    Throughout the novel, we experience Anna’s anger at Vronsky’s supposed interactions with women, Vronsky’s feeling that he has ruined Anna, and Anna’s fear of the future.
+                    In Parts Two through Six, these emotions are bottled up as Anna and Vronsky find ways to reconcile their feelings.
+                    In Part Seven, they finally spill over.
+                    For example, a sentence that characterizes the state of the Anna-Vronsky relationship in this part:
+                </p>
+                <p style="margin-bottom: 0;"><i>‘Yes, now he’s stopped pretending and I can see all his cold hatred of me,’ she thought, not listening to his words, but gazing with horror at the cold and cruel judge who looked out of his eyes, taunting her.</i></p>
+                <p style="text-align: right">- Part Seven, Chapter XXV</p>
+                <h4>Other findings</h4>
+                <p>
+                    One clear insight from the network is the difference between Tolstoy’s depiction of marital or romantic relationships and his depiction of friendships.
+                    The three main relationships in <i>Anna Karenina</i> are Anna-Vronsky, Kitty-Levin, and Anna-Karenin, all of which are romantic or marital and have relatively middling overall sentiment scores (i.e. yellow or orange lines between them).
+                    Even in Kitty and Levin’s relationship, which the novel leaves at a high point, we experience their lows as well as their highs: their honeymoon with “no honey in it,” and their tussles over Veslovsky’s interactions with Kitty and Levin’s with Anna, for example.
+                    Furthermore, the two characters not present in these big three relationships, Stiva and Dolly, clearly have a discordant relationship of their own.
+                    Every major character in <i>Anna Karenina,</i> therefore, struggles at some point with their romantic relationships and all of the complex emotions that come with love.
+                </p>
+                <p>
+                    Meanwhile, friendships provide an important source of positivity for the characters in the novel amid the strife they might experience elsewhere.
+                    Despite their differences, Stiva and Levin’s relationship scores quite highly on overall sentiment, as does Anna and Dolly’s.
+                    Vronsky has good, albeit limited, relationships with both Stiva and Levin, and Dolly and Levin are just as friendly.
+                    The only character with no apparent strong relationships of any kind is Karenin, but in fact his interactions with Lydia Ivanovna, while not shown here, form one of the most positive relationships in the entire novel.
+                </p>
+                <h4>Analytical improvements</h4>
+                <p>
+                    On the other hand, there are some parts of the novel where a simple word-based analysis doesn’t seem to capture the true relationship between characters.
+                    For example, the Kitty-Vronsky relationship is scored as extremely positive, and the overall sentiment of Anna’s relationship with Karenin declines through each of the first five parts, despite the fact that she reconciles with him in Part Four.
+                    One reason for these discrepancies, among others, could be the importance to the characters of keeping up appearances in society.
+                    While Tolstoy provides us with valuable insights into the characters’ innermost thoughts and feelings, there are instances where they do not say what they mean, because to do so would be inappropriate.
+                    A reader would understand this distinction, but a text-based scoring system would not.
+                </p>
+                <p>
+                    Additionally, the analysis as currently structured cannot “understand” the overall meaning of a sentence, just individual words.
+                    For example:
+                </p>
+                <p style="margin-bottom: 0;"><i>There was nothing happy or joyful in this feeling; on the contrary, there was a new tormenting fear.</i></p>
+                <p style="text-align: right">- Part Seven, Chapter XVI</p>
+                <p>
+                    A sentence like this obviously achieves significant negative sentiment and a high fear score, but because of the presence of the words “happy” and “joyful,” it contributes to the scores for positive sentiment and joy as well.
+                    If I were to dive deeper into the emotional network analysis, I would look for a way to score sentences or excerpts holistically, capturing their entire meaning along the dimensions of each of the eight emotions.
+                    I considered methods that do this for positive or negative sentiment, but they are unable to gauge the level of anger or surprise in a sentence, for example.
+                    Even with such methods, it is probable that some of the subtle language Tolstoy uses to describe interactions between people would not be fully understood; the best sentiment analysis models still have their imperfections.
+                </p>
+                <h4>The unsubtle Anna-Levin interaction</h4>
+                <p>
+                    Despite its flaws, the lexicon-based analysis did successfully pick up on one interesting relationship: that of Anna and Levin in Part Seven.
+                    Tolstoy delays the interaction of the two most prominent characters in <i>Anna Karenina</i> until late in the novel, when they have a surprisingly friendly meeting.
+                    Anna and Levin’s relationship is scored as one of the most positive in the entire novel, as Anna seemingly flirts with Levin and Levin is taken aback by her beauty and intelligence.
+                    For example, one of the most highly scored passages in their interaction:
+                </p>
+                <p style="margin-bottom: 0;"><i>
+                    Each word of conversation with her acquired a special meaning.
+                    It was pleasant to talk to her and still more pleasant to listen to her.
+                </i></p>
+                <p style="text-align: right">- Part Seven, Chapter X</p>
+                <p>
+                    It’s interesting that Tolstoy makes their interaction so short and yet so pleasant, and it ends up as both Anna and Levin’s most positive relationship.
+                    While so much of the interpersonal relationships in <i>Anna Karenina</i> are “decided by looks and smiles,” only the individual words used to describe the Anna-Levin interaction are needed to gauge the sentiment as well as a reader.
+                </p>
+                <p>
+                    But of course, this social-emotional network analysis is only a snapshot of the semantic meaning of <i>Anna Karenina.</i>
+                    After all, as Tolstoy himself wrote:
+                </p>
+                <p style="margin-bottom: 0;"><i>In everything, or nearly everything I have written, I have been guided by the need to gather together ideas which for the purpose of self-expression were interconnected; but every idea expressed separately in words loses its meaning and is terribly impoverished when taken by itself out of the connection in which it occurs.</i></p>
+                <p style="text-align: right">- Letter to Nikolai Strakhov, April 1876</p>
+                <p>To truly understand the ways in which relationships are presented in <i>Anna Karenina,</i> then, one must read <i>Anna Karenina.</i></p>
+            </div>
+            <div class="col-1 col-lg-2"></div>
+        </div>
     </div>
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/network.js"></script>
+<script type="text/javascript" src="js/fullpage.js"></script>
+<script type="text/javascript">
+    var myFullpage = new fullpage('#fullpage', {
+        autoScrolling:true,
+        fitToSection: true,
+        scrollOverflow: true,
+        touchSensitivity:5,
+        anchors: ['intro', 'visualization', 'methodology', 'analysis'],
+    });
+</script>
 
 </body>
 </html>

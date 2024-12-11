@@ -1,9 +1,10 @@
 class Network {
 
-    constructor(_parentContainer, _characters, _data) {
+    constructor(_parentContainer, _characters, _data, _fullData) {
         this.parentContainer = _parentContainer;
         this.characters = _characters;
         this.data = _data.filter(d => d.word_count > 500);
+        this.fullData = _fullData.filter(d => d.word_count > 500);
         this.filteredData = this.data;
 
         console.log(this.characters);
@@ -14,7 +15,7 @@ class Network {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        vis.margin = { top: 20, right: 10, bottom: 20, left: 10 };
 
         vis.width = document.getElementById(vis.parentContainer).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentContainer).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -57,6 +58,7 @@ class Network {
             .style("text-anchor", "middle")
             .attr("dominant-baseline", "central")
             .style("fill", "black")
+            .style("font-size", "1em")
             .text(d => d[0])
 
         vis.wrangleData();
@@ -66,7 +68,12 @@ class Network {
         let vis = this;
 
         let part = d3.select("#partChoice").node().value;
-        this.filteredData = this.data.filter(d => d.Part === part)
+        if(part === "all") {
+            this.filteredData = this.fullData;
+        }
+        else {
+            this.filteredData = this.data.filter(d => d.Part === part)
+        }
 
         vis.updateVis();
     }

@@ -1,0 +1,158 @@
+body {
+    font-family: Doto;
+    background-color: #293241;
+    color: white;
+}
+
+.title text, .axis-text {
+    fill: white;
+}
+
+.tick text {
+    font-family: Doto;
+}
+
+.data-story {
+    font-family: Roboto Mono;
+    font-weight: 300;
+}
+
+a {
+    color: #e4b45e;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.legend-var {
+    margin-bottom: 0;
+    font-size: 1.3em;
+}
+
+.square {
+    height: 1em;
+    width: 1em;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    padding: 8px;
+    font-family: Doto;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    color: black;
+    font-weight: 600;
+}
+
+.tooltip strong {
+    font-size: 14px;
+}
+
+.form-select {
+    display: inline-block;
+    font-weight: 700;
+}
+
+#scroll {
+    position: relative;
+}
+
+.scroll__graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.scroll__graphic.is-fixed {
+    position: fixed;
+}
+
+.scroll__graphic.is-bottom {
+    bottom: 0;
+    top: auto;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+    font-family: Doto;
+    background: rgba(255, 255, 255, 0.95); /* Adjust as needed */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    pointer-events: none;
+    color: #000; /* Dark font color for better readability */
+}
+
+.tooltip strong {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Legend Styles */
+.legend {
+    font-size: 12px;
+}
+
+.legend .legend-item {
+    margin-bottom: 5px;
+}
+
+.legend .legend-item circle {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.legend .legend-item text {
+    font-size: 16px;
+    font-weight: bold;
+    fill: white;
+    vertical-align: middle;
+}
+
+/* Filter Container */
+.filter-container {
+    bottom: -30px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.filter-container label {
+    margin-right: 5px;
+    color: black;
+}
+
+.filter-container .form-select {
+    width: 200px;
+    display: inline-block;
+}
+
+.subplot-title {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 5px 8px 5px 10px;
+    font-weight: 700;
+}

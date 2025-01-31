@@ -1,19 +1,25 @@
 document.write('\
 \
     <header id="header">\
-        <h1 id="logo"><a href="../pvp/">PVP PRODUCTIONS</a></h1>\
+        <h1 id="logo"><a href="/pvp/">PVP PRODUCTIONS</a></h1>\
         <nav id="nav">\
             <ul>\
                 <li>\
                     <a href="#">FEATURES</a>\
                     <ul>\
-                        <li><a href="moldova-3-poland-2.html">MOLDOVA 3, POLAND 2</a></li>\
                         <li>\
-                            <a href="land-of-the-setting-sun.html">LAND OF THE SETTING SUN</a>\
+                            <a href="/pvp/i-found-every-international-flight/">THE AVIATION GAME</a>\
                             <ul>\
-                                <li><a href="land-of-the-setting-sun.html#Minamitorishima">I. MINAMITORISHIMA</a></li>\
-                                <li><a href="land-of-the-setting-sun.html#forgotten">II. THE FORGOTTEN LANDS</a></li>\
-                                <li><a href="land-of-the-setting-sun.html#ends">III. THE ENDS OF THE EARTH</a></li>\
+                                <li><a href="/pvp/i-found-every-international-flight/">I. EVERY INTL. FLIGHT</a></li>\
+                            </ul>\
+                        </li>\
+                        <li><a href="/pvp/moldova-3-poland-2.html">MOLDOVA 3, POLAND 2</a></li>\
+                        <li>\
+                            <a href="/pvp/land-of-the-setting-sun.html">LAND OF THE SETTING SUN</a>\
+                            <ul>\
+                                <li><a href="/pvp/land-of-the-setting-sun.html#Minamitorishima">I. MINAMITORISHIMA</a></li>\
+                                <li><a href="/pvp/land-of-the-setting-sun.html#forgotten">II. THE FORGOTTEN LANDS</a></li>\
+                                <li><a href="/pvp/land-of-the-setting-sun.html#ends">III. THE ENDS OF THE EARTH</a></li>\
                             </ul>\
                         </li>\
                     </ul>\
@@ -21,13 +27,18 @@ document.write('\
                 <li>\
                     <a href="#">DISPATCHES</a>\
                     <ul>\
-                        <li><a href="far-from-home.html">FAR FROM HOME</a></li>\
-                        <li><a href="recapping-euro-2024.html">RECAPPING EURO 2024</a></li>\
-                        <li><a href="predicting-euro-2024.html">PREDICTING EURO 2024</a></li>\
-                        <li><a href="speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
+                        <li><a href="/pvp/far-from-home.html">FAR FROM HOME</a></li>\
+                        <li>\
+                            <a href="/pvp/predicting-euro-2024.html">EURO 2024 COVERAGE</a>\
+                            <ul>\
+                                <li><a href="/pvp/predicting-euro-2024.html">THE PREDICTIONS</a></li>\
+                                <li><a href="/pvp/recapping-euro-2024.html">THE RECAP</a></li>\
+                            </ul>\
+                        </li>\
+                        <li><a href="/pvp/speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
                     </ul>\
                 </li>\
-                <li><a href="what.html">WHAT</a></li>\
+                <li><a href="/pvp/what.html">WHAT</a></li>\
             </ul>\
         </nav>\
     </header>\

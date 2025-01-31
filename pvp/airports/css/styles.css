@@ -1,0 +1,54 @@
+h3 {
+    font-size: 2em;
+    margin-bottom: 0.7em;
+}
+hr {
+    margin: 2em 0;
+}
+
+.plot-title {
+    font-size: 2em;
+    font-family: 'Barlow';
+    font-weight: 700;
+    color: #fff01f;
+    margin: 0 0 0.3em 0;
+    padding-top: 0.5em;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.plot-subtitle {
+    font-size: 1.2em;
+    font-family: 'Barlow';
+    font-weight: 500;
+    margin: 0 0 0 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.5em;
+}
+div[class=plot-container] {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+}
+
+@media screen and (max-width: 550px) {
+    h3 {
+        font-size: 1.7em;
+    }
+    .plot-title {
+        font-size: 1.3em;
+        margin: 0 0 0 0;
+        padding-top: 0.3em;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .plot-subtitle {
+        font-size: 0.8em;
+        margin: 0 0 0 0;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    div[class=plot-container] {
+        border-width: 2px;
+    }
+}

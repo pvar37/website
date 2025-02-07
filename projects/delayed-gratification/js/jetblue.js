@@ -12,7 +12,7 @@ svg2 = d3.select("#jetBlue15").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + (margin.left + 10) + "," + margin.top + ")");
 
 svg3 = d3.select("#jetBlueCarrier").append("svg")
     .attr("width", width + margin.left + margin.right)

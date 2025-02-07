@@ -60,7 +60,7 @@ function flightMap(routes, airport, country_color, marker_color, marker_line, ai
     showlegend: false,
     geo: {
         lakecolor: 'white',
-        showlakes: true,
+        showlakes: false,
         showland: true,
         subunitcolor: 'white',
         resolution: 110,
@@ -203,7 +203,7 @@ function usaMap(routes) {
     showlegend: false,
     geo: {
         lakecolor: 'white',
-        showlakes: true,
+        showlakes: false,
         showland: true,
         subunitcolor: 'white',
         resolution: 110,
@@ -337,7 +337,7 @@ function franceMap(routes) {
     showlegend: false,
     geo: {
         lakecolor: 'white',
-        showlakes: true,
+        showlakes: false,
         showland: true,
         subunitcolor: 'white',
         resolution: 110,
@@ -472,7 +472,7 @@ function russiaMap(routes) {
     showlegend: false,
     geo: {
         lakecolor: 'white',
-        showlakes: true,
+        showlakes: false,
         showland: true,
         subunitcolor: 'white',
         resolution: 110,

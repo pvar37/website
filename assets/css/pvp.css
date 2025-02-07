@@ -122,7 +122,7 @@ input, select, textarea {
 		}
 
 		.anchor {       
-			scroll-margin-top: 90px;
+			scroll-margin-top: 105px;
 		 }
 
 	strong, b {
@@ -3902,6 +3902,10 @@ input, select, textarea {
 					.spotlight .content {
 						border-top-width: 0.2em !important;
 						padding: 3.25em 1.5em 1.25em 1.5em !important;
+					}
+				
+				.anchor {       
+					scroll-margin-top: 90px;
 					}
 
 			/* Wrapper */

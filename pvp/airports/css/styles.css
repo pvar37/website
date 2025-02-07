@@ -1,9 +1,15 @@
 h3 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin-bottom: 0.7em;
 }
 hr {
     margin: 2em 0;
+}
+b {
+    font-weight: 600;
+}
+figcaption {
+    font-size: 0.9em;
 }
 
 .plot-title {
@@ -31,6 +37,17 @@ div[class=plot-container] {
     border-width: 3px;
 }
 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1px #fff01f;
+    color: #fff01f !important;
+    width: 350px;
+    margin: auto;
+    font-weight: 700;
+}
+
 @media screen and (max-width: 550px) {
     h3 {
         font-size: 1.7em;
@@ -50,5 +67,8 @@ div[class=plot-container] {
     }
     div[class=plot-container] {
         border-width: 2px;
+    }
+    .button {
+        width: 100%;
     }
 }

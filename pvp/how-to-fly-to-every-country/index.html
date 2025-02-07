@@ -1,0 +1,576 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>How to fly to every country in the world</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta property="og:type" content="article">
+		<meta property="og:title" content="How to fly to every country in the world">
+		<meta property="og:url" content="https://www.pranayvarada.com/pvp/how-to-fly-to-every-country">
+		<meta property="og:image" content="https://www.pranayvarada.com/pvp/images/airports/airplanes.png">
+		<meta property="og:description" content="A logic puzzle of global proportions>
+		<meta property="article:author" content="Pranay Varada">
+		<meta property="article:published_time" content="2025-02-07T08:00-05:00">
+		<link rel="stylesheet" href="../../assets/css/pvp.css" />
+		<link rel="stylesheet" href="../airports/css/styles.css">
+		<link rel="icon" type="image/x-icon" href="../../assets/mgweb_pvp.png">
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELB9NNSQXG"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-ELB9NNSQXG');
+		</script>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+            <script src="/assets/js_pvp/header.js"></script>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2 style="font-family: 'Inconsolata'; margin: 0 0 10px 0">How to fly to every country in the world</h2>
+							<p style="margin: 0 0 10px 0">A logic puzzle of global proportions</p>
+							<p><a href="/">Pranay Varada</a> | February 7, 2025</p>
+							<img src="../images/airports/airplanes.png" alt="" style="object-fit: cover; width: 100%"/>
+                            <p style="margin-bottom: 0"><i>This is the second installment of a three-part series on the global international flight network. Part Three, "The Wrong Brothers," will be released Friday, February 14. (If you missed Part One, read it <a href="/pvp/i-found-every-international-flight/">here</a>.)</i></p>
+							<p style="margin: 0.5em 0 0.5em 0"><i>Desktop recommended for interactive elements &ndash; they may take a moment to load.</i></p>
+                        </header>
+
+						<!-- Content -->
+							<section id="content">
+                                <h3>1. FUN.</h3>
+                                <p>
+                                    Welcome to the runway of Tuvalu's Funafuti International Airport (FUN). If you want to fly to every country in the world, you have to start here.
+                                </p>
+                                <p>
+                                    Tuvalu is a tiny country, just 10 square miles spread out over six atolls and three reef islands. To put that in perspective, Disney World is four times bigger. Funafuti is one of Tuvalu's atolls, and its main island, Fongafale, has just enough space to accommodate a 5,000-foot-long runway. The reason you have to start here is that Funafuti International Airport has flights to just one country: Fiji. Unless you plan on sailing across the Pacific, the only way to get to Tuvalu is through Fiji.
+                                </p>
+                                <div class="plot-container">
+									<p class="plot-title">One way out</p>
+									<p class="plot-subtitle">All countries with flights from Funafuti International Airport, Tuvalu</p>
+									<div id="funafuti-map" class="plot"></div>
+								</div>
+                                <br>
+                                <p>
+                                    Three flights a week to Suva, one flight a week to Nadi. That leaves a lot of downtime on the runway, which Tuvaluans use to do things like, let's say, <a href="https://www.france24.com/en/live-news/20240619-track-less-tuvalu-sends-one-man-team-to-paris-olympics">train for the Olympics</a>. That's what Karalo Maibuca did, because when your country doesn't have a single track, you have to go to the airport.
+                                </p>
+                                <p>
+                                    The airport was also Maibuca's first stop en route to the Paris Olympics, where he ran the 100 meters in <a href="https://olympics.com/en/paris-2024/results/athletics/men-s-100m/prel--------">11.30</a> seconds. A quick Google Flights search reveals that the fastest way to get from Funafuti to Paris is a 40-hour jaunt that includes stops in Nadi, Vancouver, and London.<sup><a href="#fn1" class="anchor" id="ref1">1</a></sup> Not Suva: that airport's only international destination is Funafuti itself.
+                                </p>
+                                <p>
+                                    That leaves one option for our next stop: Nadi International Airport. And that's where this story <i>really</i> begins.
+                                </p>
+								<hr>
+                                <h3>2. A BRIEF MATHEMATICAL INTERLUDE</h3>
+                                <p>
+                                    So, the challenge: find the smallest set of international airports from which you can fly to every country in the world.
+                                </p>
+                                <p>
+                                    I laid out this problem in more detail in <a href="/pvp/i-found-every-international-flight/">Part One</a>. But I didn't tell you how I found the answer. Here's how. (Skip to <a href="#fiji">here</a> if you don't care. Fair warning, it's going to get messy.)
+                                </p>
+                                <p>
+                                    As I mentioned then, I found every international flight in the world<sup>*</sup>. For most countries, there's usually one airport that accounts for nearly all of their international connections. These airports could serve as proxies for their countries, so instead of trying to figure out where you can get from Colombia, for example, we could simply look at which countries have flights from Bogotá. However, it's not always clear <i>which</i> airport to use as a proxy. Take the United States, which has three airports with unique focus areas: New York's John F. Kennedy International Airport, for flights to Europe; Miami International Airport, for flights to Latin America and the Caribbean, and Daniel K. Inouye International Airport in Honolulu, the country's main airport in the Pacific. And that list doesn't even include the U.S. territory of Guam, which also has flights to several North Pacific nations. All of these candidates could be part of the set of airports with flights to every country in the world.
+                                </p>
+                                <p>
+                                    I cut down every other country's airport tally to one, but for the U.S., I kept Miami, Honolulu, and Guam in the mix. (It'll be clear why these three airports are so important later on.) So we're still at 190 countries in the world that you can fly to and from, but we have 192 airports to consider, all connected by thousands of international flights. Here's what that looks like:
+                                </p>
+                                <div class="plot-container">
+									<p class="plot-title">Wheels up</p>
+									<p class="plot-subtitle">The 192-airport network, connected by 4,007 flights</p>
+									<div id="flight-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									It's a mess, to be sure. And to make it even more of a mess, if you strip away all of the context, you find that the problem in question &ndash; finding the smallest subset of a set of nodes from which all of the nodes are accessible &ndash; is actually a famous graph theory problem with no known way of finding a quick solution.
+								</p>
+								<p>
+									I promise we will get back to fun geography things soon. But for now, strap in.
+								</p>
+								<p>
+									You can think of the map above as a <i>graph,</i> a term often used in mathematics to describe a set of related objects. Each of the dots on the map, representing an airport, is a <i>vertex.</i> Flights between airports are <i>edges,</i> so that edges connect vertices. It turns out that the set of airports from which you can fly to every country in the world is what's called a <a href="https://en.wikipedia.org/wiki/Dominating_set"><i>dominating set</i></a> &ndash; a subset of the 190 vertices (let's call it <i>D</i>) such that each vertex is either in <i>D</i> or has an edge connecting to an element of <i>D.</i>
+								</p>
+								<p>
+									But we don't want just <i>any</i> dominating set &ndash; otherwise, we could just take all 192 airports, since that qualifies as a dominating set: by definition, every airport is in that set. We want the <i>smallest</i> dominating set. And graph theory has a term for the size of that set, too: the spectacularly named <i>domination number.</i> So our question is really: what is the domination number of global air travel? And what is the corresponding subset of the world's airports?
+								</p>
+								<p>
+									All we need is a simple algorithm that takes in a graph and spits out the domination number. But it turns out that algorithm doesn't exist. Because &ndash; in computer science terms &ndash; this problem is NP-hard.<sup><a href="#fn2" class="anchor" id="ref2">2</a></sup> Basically, what this means is that there's no quick and easy way to find the smallest dominating set, no function you can write up that will just tell you the answer.
+								</p>
+								<p>
+									That doesn't mean we have no chance of finding the smallest dominating set, however. We just need to find a workaround.
+								</p>
+								<p>
+									I tried constructing a computational algorithm of my own, starting by finding airports that have flights to the most countries, marking those countries as visited, and gradually reducing the pool of unvisited countries by adding more airports. But it became clear to me that this was the wrong approach. What I needed to do was start with the <i>hardest</i> countries to visit, find airports with flights to <i>those</i> countries, and gradually reduce the pool of unvisited countries from the bottom up. It became a logic puzzle of sorts.
+								</p>
+								<p>
+									What follows is the solution to that logic puzzle.
+								</p>
+								<hr>
+								<h3 id="fiji" class="anchor">3. OUT OF TUVALU</h3>
+								<p>
+									Let's begin where we left off: Fiji's Nadi International Airport.
+								</p>
+								<p>
+									Fiji might seem like an odd place for an international travel hub, with a population of less than a million and a location over a thousand miles from any major city. Nadi (pronounced NAN-dee), too, isn't even Fiji's capital or its largest city. Yet every year, <a href="https://www.parliament.gov.fj/wp-content/uploads/2020/12/Fiji-Airports-2018&ndash;2019-Annual-Report.pdf">over two million</a> international passengers pass through its airport, which has flights to fourteen countries around the Pacific. Check them out in the interactive map below:
+								</p>
+								<div class="plot-container">
+									<p class="plot-title" style="color: #69b3e7">South Pacific superpower</p>
+									<p class="plot-subtitle">All 14 countries with flights from Nadi International Airport, Fiji</p>
+									<div id="nadi-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Fiji's position as the biggest country between Australia, New Zealand, and Hawaii makes it an important transit point for travelers to and from the South Pacific. Not only is it the only country with flights from Tuvalu, it has direct air connections to Nauru, Samoa, the Solomon Islands, Tonga, and Vanuatu, each of which have flights to four or fewer countries.
+								</p>
+								<p>
+									Fiji's growing status as a tourist destination bodes well for Nadi International, and also for its national airline, Fiji Airways. The airline just launched its longest route, a 6,600-mile journey to Dallas, Texas, where travelers can connect to flights on new partner American Airlines. Getting to Fiji has never been easier.
+								</p>
+								<p>
+									So Nadi allows us to tick 14 countries off the list: <b>Australia, Canada, China, Japan, Kiribati, Nauru, New Zealand, Samoa, Singapore, Solomon Islands, Tonga, Tuvalu,</b> the <b>United States,</b> and <b>Vanuatu.</b> It helps get a lot of the small Pacific island countries out of the way, but not all of them. We'll come back to them later, though, because Tuvalu isn't the only country with flights to just one other. We head to Johannesburg next. 14 down, 176 to go.
+								</p>
+								<hr>
+								<h3>4. THE LESOTHO STIPULATION</h3>
+								<p>
+									The country of Lesotho is located entirely within South Africa. It's a country of mountains &ndash; it even has a <a href="https://www.afriski.net">ski resort</a> &ndash; and is home to over two million people. All of these people, though, are served by just one international airport &ndash; Moshoeshoe I International Airport &ndash; which serves the capital of Maseru. This airport typically has three flights a day, all to one destination: O. R. Tambo International Airport, serving Johannesburg, South Africa.
+								</p>
+								<p>
+									If you want to get in or out of Lesotho, you have to go through South Africa first. That's the rule, whether by road, rail, or air. So there's no way around it: we have to add O. R. Tambo International to our list. Thankfully, you can get from there to a lot more places than just Lesotho.
+								</p>
+								<p>A lot more.</p>
+								<div class="plot-container">
+									<p class="plot-title" style="color: #00c478">Proud member of the six-continent club</p>
+									<p class="plot-subtitle">All 36 countries with flights from O. R. Tambo International Airport, Johannesburg, South Africa</p>
+									<div id="johannesburg-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									That's because O. R. Tambo International Airport is a member of an exclusive club: airports with flights to all six inhabited continents. The only other airports that achieve this distinction year-round serve New York, London, Paris, Doha, and Dubai.<sup><a href="#fn3" class="anchor" id="ref3">3</a></sup> Johannesburg isn't quite the transit point that those cities are &ndash; it's second to <a href="https://simpleflying.com/africa-10-busiest-airports-weekly-flight-ops/">Cairo</a> by total passengers in Africa alone &ndash; but it can take travelers as far away as the U.S. or Australia. And for our purposes, Johannesburg is also an important regional airport: you can see southern Africa blanketed in a sea of green in the map above.
+								</p>
+								<p>
+									Like Nadi, Johannesburg is the primary hub of a national airline, South African Airways. It's also home base for regional airline Airlink, which operates those Lesotho flights. All in all, O. R. Tambo adds 32 countries to our tally, bringing us up to 46 through two selected airports. We start off in Africa with flights to <b>Angola, Botswana, Cameroon,</b> the <b>Democratic Republic of the Congo, Egypt, eSwatini, Ethiopia, Gabon, Ghana, Kenya, Lesotho, Madagascar, Mozambique, Mauritius, Malawi, Namibia, Nigeria, Rwanda, Seychelles, Tanzania, Uganda, Zambia,</b> and <b>Zimbabwe.</b> <b>Brazil</b> is our first stop in South America, and we get a head start in Europe with <b>France, Germany, Netherlands, Switzerland,</b> and the <b>United Kingdom.</b> Finally, we add three more countries in Asia: <b>Qatar, Turkey,</b> and the <b>United Arab Emirates.</b>
+								</p>
+								<p>
+									Let's take a quick look at how we're doing on the whole. In the map below, you can see our two selected airports and each country we've visited from them. If we've visited countries multiple times &ndash; so far, that's Australia, China, and the U.S. &ndash; they'll have the same color as their nearest selected airport. So they're all Fijian blue for now, but that could change. Also, you'll notice South Africa still isn't colored in &ndash; that's because even though we selected Johannesburg's airport, we haven't yet visited South Africa through an international flight from one of our selected airports. Eventually, we want all of our selected airports to connect as well.
+								</p>
+								<div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #1</p>
+									<p class="plot-subtitle">2 airports selected | 46 countries visited</p>
+									<div id="choro2" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									But before we connect the dots, we have another forced move to make. You might have seen this one coming.
+								</p>
+								<hr>
+								<h3>5. THE HERMIT KINGDOM</h3>
+								<p>
+									In the first weeks of 2020, Air Koryo suspended all five of its international flight routes, shutting an entire country off from the rest of the world. They would not resume for a long time.
+								</p>
+								<p>
+									On August 22, 2023, Air Koryo made its first international flight in three and a half years. The Pyongyang-to-Beijing route was <a href="https://www.aviation24.be/airlines/air-koryo/air-koryo-flies-back-to-beijing-for-the-first-time-in-3-years/">back on</a>.
+								</p>
+								<p>
+									Yes, it's time to visit North Korea &ndash; metaphorically, of course. The country has one international airport, Pyongyang International Airport, and one commercial airline, Air Koryo. You (well, probably not <i>you</i>) can fly from Pyongyang to just two international destinations: Beijing, of course, as well as Vladivostok, a Russian port city not far from the North Korean border. Given that Beijing Capital International Airport is one of the busiest airports in the world, picking between the two isn't much of a decision. Beijing, welcome to the selection list.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #ece592">From Pyongyang to the world</p>
+									<p class="plot-subtitle">All 50 countries with flights from Beijing Capital International Airport, China</p>
+									<div id="beijing-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Beijing opened a new international airport in 2019, but make no mistake: Beijing Capital, which opened in 1958, is still China's main international airport in terms of access to other countries, scoring 50 destinations on that front. It's actually China's <a href="https://www.thatsmags.com/gba/post/38529/who-was-china-s-busiest-airport-in-2024-the-numbers-are-in">third-busiest airport</a>, following those of Guangzhou and Shanghai. But unlike those two airports, it has flights to 18 European countries. It takes a special kind of airport to have flights to widely blacklisted countries such as Belarus, Russia, and North Korea alongside small European countries like Ireland, Czechia, and Hungary. That's what Beijing Capital offers.
+								</p>
+								<p>
+									In total, Beijing Capital nearly doubles our visited countries tally from 46 to 82. Outside Europe and Asia, we add Algeria and Mexico &ndash; interestingly, Hainan Airlines' service from Beijing is to Tijuana, not Mexico City, owing both to Tijuana's location on the Pacific coast and Mexico City's high altitude. In Europe, we add <b>Austria, Belgium, Belarus, Czechia, Denmark, Greece, Hungary, Ireland, Italy, Poland, Russia, Serbia, Spain,</b> and <b>Sweden,</b> and in Asia, we color in <b>Azerbaijan, Bangladesh, Cambodia, Indonesia, Iran, Iraq, Kazakhstan, Malaysia, Mongolia, Myanmar, North Korea, Pakistan,</b> the <b>Philippines, Saudi Arabia, South Korea, Taiwan, Thailand, Turkmenistan, Uzbekistan,</b> and <b>Vietnam.</b>
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #2</p>
+									<p class="plot-subtitle">3 airports selected | 82 countries visited</p>
+									<div id="choro3" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									So here we are! The world's starting to fill in nicely. We have a lot of work to do in the Americas, and India's certainly a glaring omission from our map, but keep in mind this is all with just three airports we were basically forced to select.<sup><a href="#fn4" class="anchor" id="ref4">4</a></sup> Is it possible that the answer to the question could be a single-digit number? Time will tell.
+								</p>
+								<hr>
+								<h3>6. GETTING SPECIFIC IN THE PACIFIC</h3>
+								<p>
+									It seems weird now, but in 1986, less than 40 years ago, two countries achieved independence from the United States. These were the Federated States of Micronesia and the Marshall Islands, two small island nations just above the Equator in the middle of the Pacific. They were part of the <a href="https://en.wikipedia.org/wiki/Trust_Territory_of_the_Pacific_Islands">Trust Territory of the Pacific Islands</a> (TTPI), a vast collection of northern Pacific islands which Allied forces took control of from Japan at the end of World War II. The United Nations handed over the responsibility of administering this territory to the United States.
+								</p>
+								<p>
+									In addition to Micronesia and the Marshall Islands, the TTPI included Palau, which was established as a republic in 1981 (but which didn't actually become fully sovereign until 1994!), and the Northern Mariana Islands, which remain a U.S. territory. Micronesia, the Marshall Islands, and Palau continue to maintain ties to the U.S. through the Compact of Free Association (COFA), which allows many of their citizens to live and work in the U.S., and in return gives the U.S. the right to operate military installations in those countries.
+								</p>
+								<p>
+									All of that is to say: getting to these countries is very hard, and the quickest way to do so is to go through U.S. territory.
+								</p>
+								<p>
+									Unfortunately, Nadi doesn't have flights to these three countries, so they're still on our unvisited list. The Marshall Islands has flights from just three countries: Kiribati, Micronesia, and the United States (through Honolulu). Micronesia, meanwhile, is only accessible from the other two COFA countries plus Guam. Palau, despite being the least populous member of the COFA triad, is accessible from a whopping five countries &ndash; Australia (through Brisbane), China (through Hong Kong), Micronesia, the Philippines, and Taiwan, plus Guam. This checks out in some sense, both because Palau is just a few hundred miles from the Philippines and because its barrier reefs are a growing tourist destination. But you see the problem: there's not a single airport with flights to all three of these small countries. We're going to have to add <i>two</i> airports to the list just to solve this puzzle.
+								</p>
+								<p>
+									The most efficient way to do this is by adding Guam's Antonio B. Won Pat International Airport and Honolulu's Daniel K. Inouye International Airport. This is why I added these airports to the list of potential candidates in the beginning, despite the fact that they're not primary international hubs for any country: you need them for this one specific task.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #66b2b2">America's west Pacific outpost</p>
+									<p class="plot-subtitle">All 7 countries with flights from Antonio B. Won Pat International Airport, Guam</p>
+									<div id="guam-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Here's what Guam's got going on. It's not much, but importantly for our purposes, two of the seven countries you can get to from Antonio B. Won Pat International are <b>Palau</b> and <b>Micronesia,</b> both via United Airlines.<sup><a href="#fn5" class="anchor" id="ref5">5</a></sup> Plus, United also operates direct flights from Guam to Honolulu, our other selection in this phase of the game:
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #ffb2e1">Gateway to the Marshall Islands</p>
+									<p class="plot-subtitle">All 10 countries with flights from Daniel K. Inouye International Airport, Honolulu, United States</p>
+									<div id="honolulu-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									For its position in the middle of the Pacific, Honolulu having flights to 10 countries is honestly impressive. One of those is our last remaining North Pacific island nation: the <b>Marshall Islands.</b> With these two selections, Honolulu and Guam, our visited countries tally increases from 82 to 85. Here's the map:
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #3</p>
+									<p class="plot-subtitle">5 airports selected | 85 countries visited</p>
+									<div id="choro5" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									The only visible change is Canada's flip to Honolulu pink (thank Vancouver, the Pacific's most underrated hub, for that). But just know that three very hard-to-reach countries are off the list. On we go.
+								</p>
+								<hr>
+								<h3>7. THE CAPITAL OF THE CARIBBEAN</h3>
+								<p>
+									The city of Miami technically isn't in the Caribbean. But it acts like it is.
+								</p>
+								<p>
+									At the outset, the island countries of the Caribbean seemed like they could have been an interesting part of the puzzle. Like their counterparts in the Pacific, they don't have too many air connections, though they're a lot closer together geographically. The thing, though, is that you can get to all of them from Miami International Airport.
+								</p>
+								<p>
+									And not just them. There's more.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #ff4992">Everybody loves Florida</p>
+									<p class="plot-subtitle">All 45 countries with flights from Miami International Airport, United States</p>
+									<div id="miami-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									There's no better way to make headway in the Western Hemisphere. There are 23 countries in North America. Miami has flights to every single one of them. Even among South American countries, there are just four &ndash; Paraguay, Suriname, Uruguay, and Venezuela (the latter for obvious reasons) &ndash; that don't have flights from Miami.
+								</p>
+								<p>
+									This is why I chose Miami as the main airport to represent the United States for the purposes of this problem, despite the fact that it's just the tenth-busiest airport in the country. Even for international passengers, it still trails JFK and LAX, but while those airports tackle a smattering of trans-Atlantic and trans-Pacific destinations respectively, the Caribbean is left for Miami, the American Airlines powerhouse, to handle. With Miami International under our belt, our visited countries tally goes from 85 to 116, locking down almost all of the Americas. In North America, we add <b>Antigua and Barbuda, The Bahamas, Barbados, Belize, Costa Rica, Cuba, Dominica, the Dominican Republic, El Salvador, Grenada, Guatemala, Haiti, Honduras, Jamaica, Nicaragua, Panama, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines,</b> and <b>Trinidad and Tobago.</b> In South America, meanwhile, we get to visit <b>Argentina, Bolivia, Chile, Colombia, Ecuador, Guyana,</b> and <b>Peru.</b>
+								</p>
+								<p>
+									And that's not all: in the Old World, we add <b>Israel, Morocco, Norway,</b> and <b>Portugal.</b> It's not just Americans who want to visit Miami, after all.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #4</p>
+									<p class="plot-subtitle">6 airports selected | 116 countries visited</p>
+									<div id="choro6" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									There's no question about it: American Airlines is absolutely essential for this game. Without their Caribbean service, we'd need to add a few more airports. But we still have four countries to visit in South America.
+								</p>
+								<p>
+									Luckily, we have another powerhouse airport up our sleeve.
+								</p>
+								<hr>
+								<h3>8. THE ISTHMUS</h3>
+								<p>
+									There is one and only one airport in the world with flights to every country in South America. Is it São Paulo's Guarulhos International Airport, serving the most populous city on the continent? No. Is it Ezeiza in Buenos Aires? Nope. Somewhere more central like Lima? Also no. It's Tocumen International Airport in Panama City.<sup><a href="#fn6" class="anchor" id="ref6">6</a></sup>
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #1fa7db">Perfect positioning</p>
+									<p class="plot-subtitle">All 32 countries with flights from Tocumen International Airport, Panama City, Panama</p>
+									<div id="panama-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									One notable thing about Panama City: it's in North America. And yet it's the only city from which you can fly directly to every South American country. The reason why mostly boils down to Guyana and Suriname, the two small countries in northeastern South America, which don't have flights to cities like São Paulo because of distance (far) and demand (low). Meanwhile, because Panama City is a useful transit point to get just about anywhere in the Americas, it can still accommodate flights to faraway destinations like Montevideo, Uruguay. Every non-island country in North and South America is directly accessible from Panama City.
+								</p>
+								<p>
+									Things got a little bit shaky in <a href="https://www.reuters.com/business/aerospace-defense/copa-airlines-says-venezuela-suspend-flights-panama-2024-07-30/">July</a> when Panama and Venezuela got into a diplomatic spat, leading Panama's flag carrier Copa Airlines to suspend all flights to Venezuela. Fortunately, it seems as though Turpial Airlines, a Venezuelan airline headquartered in Valencia, is still operating flights between that city and Tocumen International.<sup><a href="#fn7" class="anchor" id="ref7">7</a></sup>
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #5</p>
+									<p class="plot-subtitle">7 airports selected | 120 countries visited</p>
+									<div id="choro7" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									With Panama City in tow, we visit <b>Paraguay, Suriname, Uruguay,</b> and <b>Venezuela.</b> And just like that, we're done with the Americas! We're sitting at 120 countries visited through just seven selected airports &ndash; just 70 more to go.
+								</p>
+								<p>
+									Where next? Incredibly, for one final time, we have to return to the Pacific.
+								</p>
+								<hr>
+								<h3>9. TYING UP LOOSE ENDS</h3>
+								<p>
+									Let's sum up where we are. We had no choice but to select Nadi, Johannesburg, and Beijing at the start, thanks mainly to Tuvalu, Lesotho, and North Korea. We then visited the three island countries of the North Pacific by adding two more airports in Guam and Honolulu &ndash; as well as we could have done. And we've just added Miami and Panama City to cover all of the Americas &ndash; again as efficiently as we could have done.
+								</p>
+								<p>
+									So while there's a few loose ends we need to tie up in the Asia-Pacific, it's not because we've made any mistakes along the way. You do have to zoom in quite a bit to see the full scope of the problem, though.
+								</p>
+								<p>
+									Papua New Guinea is the big one we haven't visited, just northeast of Australia. But there's also Laos, nestled between Thailand and Vietnam; the petrostate of Brunei, which shares the island of Borneo with parts of Malaysia and Indonesia; and Timor-Leste, also just north of Australia. Plus, there are several countries in South Asia it would be nice to get to at some point.
+								</p>
+								<p>
+									What if there were a way we could visit all of these countries in one fell swoop?
+								</p>
+								<div class="plot-container">
+									<p class="plot-title" style="color: #f37079">The world's best airport?</p>
+									<p class="plot-subtitle">All 43 countries with flights from Changi Airport, Singapore</p>
+									<div id="singapore-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Our salvation comes in the form of Singapore's Changi Airport, frequently renowned as the <a href="https://www.straitstimes.com/singapore/transport/changi-airport-regains-crown-named-world-s-best-airport-for-12th-time">world's best airport.</a> Despite the fact that Singapore is less than 300 square miles in area, its airport is the <a href="https://en.wikipedia.org/wiki/List_of_busiest_airports_by_international_passenger_traffic">fifth-busiest</a> in the world by international passenger traffic, following Dubai, London, Amsterdam, and Paris. Changi is both regionally important, as the only airport with flights to every country in Southeast Asia, and a global hub, as best demonstrated by Singapore Airlines' service to New York &ndash; the longest direct flight in the world.
+								</p>
+								<p>
+									In a way, choosing Changi was inevitable, because of Timor-Leste, the Portuguese-speaking republic that occupies half an island. Its international airport, in the capital of Dili, has flights to just four international destinations: Darwin and Melbourne in Australia, both of which trail Sydney in terms of aviation importance; Denpasar, on the Indonesian island of Bali, which accommodates a lot of tourists but is also not its country's primary airport; and Singapore. It was an easy choice.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #6</p>
+									<p class="plot-subtitle">8 airports selected | 132 countries visited</p>
+									<div id="choro8" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Singapore also functions as a hub airport for our selections, connecting Johannesburg and Beijing to Nadi. We've dramatically narrowed the scope of the puzzle left to be solved: every country we have yet to visit lies between Iceland in the west and Bhutan in the east. Singapore gets us to 132 countries visited: in Asia, we add <b>Bangladesh, Bahrain, Brunei, India, Laos, the Maldives, Nepal, Sri Lanka,</b> and <b>Timor-Leste,</b> and elsewhere, we add <b>Finland</b> (surprisingly), <b>Papua New Guinea,</b> and <b>South Africa.</b>
+								</p>
+								<p>
+									The strategy of finding a hard-to-reach country and selecting the best airport with access to that country seems to be working. Let's run it back.
+								</p>
+								<hr>
+								<h3>10. UNCONDITIONAL AVIATION</h3>
+								<p>
+									As we approach what seems to be the endgame, one thing stands out: there are kind of a lot of countries yet to be visited that are not exactly known for their stability. Afghanistan. Syria. Yemen. Sudan. Somalia. It could be very challenging to get to these countries, given their volatile travel situations.
+								</p>
+								<p>
+									But it doesn't have to be. Enter Dubai International Airport.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #ce3196">At the heart of it all</p>
+									<p class="plot-subtitle">All 99 countries with flights from Dubai International Airport, United Arab Emirates</p>
+									<div id="dubai-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Dubai is essentially the great unifier of airports. It doesn't matter who's in charge of your country, whether there's a conflict happening, how small it is &ndash; if it's a country, Dubai probably has flights to it. In fact, Dubai International has flights to 99 of the world's 190 countries, more than any airport in the world, save for Istanbul. Like Johannesburg, Dubai is a member of the six-continent club, with flights to destinations as far away as Brazil and New Zealand. It's the busiest airport in the world by international passenger traffic.
+								</p>
+								<p>
+									While Emirates, one of the world's biggest airlines, handles most of the long-distance work, it's actually the low-cost airline Flydubai that hits a lot of the countries closer to home: Djibouti, Eritrea, Somalia, South Sudan, and more. And not only do Dubai's flights blanket the Middle East and North and East Africa, we also get to visit the three Central Asian countries we've been missing &ndash; Afghanistan, Kyrgyzstan, and Tajikistan &ndash; as well as Bhutan, our one remaining destination in South Asia, thanks to Drukair's <a href="https://aviation.direct/en/drukair-announces-new-flights-to-dubai-and-fleet-renewal">new Dubai-Paro service</a>. Plus, with Emirates' Miami service, all of our selected airports are now directly connected.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #7</p>
+									<p class="plot-subtitle">9 airports selected | 162 countries visited</p>
+									<div id="choro9" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Emirates, Flydubai, and company increase our visited countries tally from 132 to 162, a monumental jump this late in the game. We complete our tour of Asia with visits to <b>Afghanistan, Armenia, Bhutan, Georgia, Jordan, Kyrgyzstan, Kuwait, Lebanon, Oman, Syria, Tajikistan,</b> and <b>Yemen.</b> In Europe, we tack on <b>Albania, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Latvia, Moldova, Romania, Slovakia,</b> and <b>Slovenia.</b> And in Africa, we get to add <b>Djibouti, Eritrea, Guinea, Libya, Somalia, South Sudan, Sudan,</b> and <b>Tunisia.</b>
+								</p>
+								<p>
+									So as it stands, just 28 countries remain, eight in Europe (despite not yet selecting any European airports) and 20 in Africa, mainly in the western and central parts of the continent. The finish line is in sight!
+								</p>
+								<hr>
+								<h3>11. THE AFRICAN UNION</h3>
+								<p>
+									Africa's biggest airline doesn't hail from Egypt, the site of its busiest airport; Nigeria, its most populous country; or South Africa, with connections to all six inhabited continents. It's <a href="https://simpleflying.com/largest-airlines-africa/">Ethiopian Airlines</a>.
+								</p>
+								<p>
+									Emperor Haile Selassie I founded the airline in 1945, and since then, it has turned Addis Ababa Bole International Airport into one of the world's biggest hubs in terms of destinations served. In fact, of all of Africa's airports, Bole International has flights to the most countries. It makes sense: Addis Ababa is the headquarters of the African Union.
+								</p>
+								<div class="plot-container">
+									<p class="plot-title" style="color: #0581e3">Landlocked but not airlocked</p>
+									<p class="plot-subtitle">All 65 countries with flights from Addis Ababa Bole International Airport, Ethiopia</p>
+									<div id="addis-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									The power of Addis Ababa and Ethiopian Airlines is their ability to take us to many of Africa's hard-to-reach countries. Take the Comoros, a small island country between Mozambique and Madagascar that you wouldn't have even known was missing from our visited countries list. Bole International is one of just four international airports with flights to the Comoros, with the others in Nairobi, Dar es Salaam, and the nearby French island of Mayotte. Take Chad as well: apart from Ethiopia, the only other countries with flights there are Cameroon, Egypt, Niger, Nigeria, and Turkey. The sole overlap is Bole International Airport.
+								</p>
+								<p>
+									By adding Addis Ababa at the tenth spot on our list, we nearly halve the size of our pool of remaining countries, from 28 to 15. All of the countries we make our first visits to are in Africa: <b>Benin, Burkina Faso, Burundi,</b> the <b>Central African Republic, Chad,</b> the <b>Comoros, Côte d'Ivoire, Equatorial Guinea, Liberia, Mali, Niger,</b> the <b>Republic of the Congo,</b> and <b>Togo.</b>
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #8</p>
+									<p class="plot-subtitle">10 airports selected | 175 countries visited</p>
+									<div id="choro10" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Addis Ababa lays us a good foundation in West Africa. But there are still seven African countries we have yet to visit. Let's go there next. We're so close!
+								</p>
+                                <hr>
+								<h3>12. THE BEGINNING OF A BEAUTIFUL FRIENDSHIP</h3>
+								<p>
+									As it turns out, there's no way for us to visit the rest of Africa through just one airport. The reason, as it so often is, is another small island country. So we're going to go for another twofer, à la Guam and Honolulu.
+								</p>
+								<p>
+									First, let's get the other six countries out of the way:
+								</p>
+								<div class="plot-container">
+									<p class="plot-title" style="color: #fc6a03">If that plane leaves the ground&hellip;</p>
+									<p class="plot-subtitle">All 44 countries with flights from Mohammed V International Airport, Casablanca, Morocco</p>
+									<div id="casablanca-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Casablanca's Mohammed V International Airport is a regional hub in its own right, with flights to every country in West Africa in addition to major European and Middle Eastern destinations as well as a few even further away. Through Casablanca, we reach <b>Cabo Verde, The Gambia,</b><sup><a href="#fn8" class="anchor" id="ref8">8</a></sup> <b>Guinea-Bissau, Mauritania, Senegal</b> (the most populous country we had yet to visit), and <b>Sierra Leone.</b> The one country we don't get to is <b>São Tomé and Príncipe,</b> the island country in the Gulf of Guinea.
+								</p>
+								<p>
+									There are just four cities from which you can get to these islands: Luanda, Angola; Libreville, Gabon; Accra, Ghana; and Lisbon, Portugal. Given that the rest of our unvisited countries are European, we're going to have to go with Lisbon.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #71d6a4">Remnants of empire</p>
+									<p class="plot-subtitle">All 46 countries with flights from Humberto Delgado Airport, Lisbon, Portugal</p>
+									<div id="lisbon-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Why does Lisbon's Humberto Delgado Airport have flights to a tiny African island country? Well, São Tomé and Príncipe used to be a Portuguese colony. Ironically, though, the country's national airline, STP Airways, is <a href="https://simpleflying.com/european-union-airline-ban/">banned from the European Union</a> because of a failure to meet safety standards, meaning that its flights to and from Lisbon are instead operated by the Portuguese airline EuroAtlantic Airways.
+								</p>
+								<p>
+									Keeping with the island theme, flights from Lisbon also enable us to visit <b>Iceland</b> and <b>Malta</b> for the first time, through Icelandair and Ryanair respectively. TAP Air Portugal has a long destination list in its own right, but the only country it adds for our purposes is <b>Luxembourg</b>, a country whose population is around 15 percent Portuguese.<sup><a href="#fn9" class="anchor" id="ref9">9</a></sup>
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #9</p>
+									<p class="plot-subtitle">12 airports selected | 185 countries visited</p>
+									<div id="choro12" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									So: we've created a network of 12 airports with flights to 185 countries. Just four more remain. Who have we left for last?
+								</p>
+								<hr>
+								<h3>13. THE ROAD TO MONTENEGRO</h3>
+								<p>
+									We started in the Pacific, checked off the Americas, traveled all around Africa, and now we're here. It feels like we just need one more airport to wrap things up. At the end of it all, the five countries we have yet to visit are: <b>Estonia, Kosovo, Lithuania, Montenegro,</b> and <b>North Macedonia.</b>
+								</p>
+								<p>
+									How did it come to this final five? They fit a similar profile: Estonia and Lithuania are two of the three small Baltic states, and the other three countries are the smallest members of the Balkans. Looking at the map, we've reached nearly every other country in Europe from either Lisbon or Dubai. Our five remaining countries, though, are evidently too small for an airline like Ryanair or Flydubai to operate year-round flights from those cities.
+								</p>
+								<p>
+									But there's a centrally located hub with flights to all five of these countries. Welcome to Vienna International Airport.
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title" style="color: #c8102e">Vienna waits for you</p>
+									<p class="plot-subtitle">All 59 countries with flights from Vienna International Airport, Austria</p>
+									<div id="vienna-map" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									Vienna International has flights to nearly every accessible country in Europe, with the exception of Slovenia (too close), plus Belarus and Russia (due to EU bans). Its flagship carrier, Austrian Airlines, takes us to the three Balkan countries we have yet to visit, and Ryanair &ndash; for whom Vienna is also a significant hub &ndash; gets us to Tallinn, Estonia. Both airlines have flights from Vienna to Vilnius, Lithuania.
+								</p>
+								<p>
+									And just like that, we're done!
+								</p>
+                                <div class="plot-container">
+									<p class="plot-title">State of the game: Checkpoint #10</p>
+									<p class="plot-subtitle">13 airports selected | 190 countries visited</p>
+									<div id="choro13" class="plot"></div>
+								</div>
+								<br>
+								<p>
+									We did it! The size of the smallest dominating set, the answer to the question I've been trying to answer for five years, is <b>13.</b> Thirteen airports to connect the whole world, to fly between any two countries. Once again, here's our all-star cabin crew:
+								</p>
+								<ul>
+									<li><b>Nadi International Airport,</b> Nadi, Fiji</li>
+									<li><b>O. R. Tambo International Airport,</b> Johannesburg, South Africa</li>
+									<li><b>Beijing Capital International Airport,</b> Beijing, China</li>
+									<li><b>Antonio B. Won Pat International Airport,</b> Guam</li>
+									<li><b>Daniel K. Inouye International Airport,</b> Honolulu, United States</li>
+									<li><b>Miami International Airport,</b> Miami, United States</li>
+									<li><b>Tocumen International Airport,</b> Panama City, Panama</li>
+									<li><b>Changi Airport,</b> Singapore</li>
+									<li><b>Dubai International Airport,</b> Dubai, United Arab Emirates</li>
+									<li><b>Addis Ababa Bole International Airport,</b> Addis Ababa, Ethiopia</li>
+									<li><b>Mohammed V International Airport,</b> Casablanca, Morocco</li>
+									<li><b>Humberto Delgado Airport,</b> Lisbon, Portugal</li>
+									<li><b>Vienna International Airport,</b> Vienna, Austria</li>
+								</ul>
+								<p>
+									I leave you with this: the complete flight map for our visit to every country in the world. Every country is assigned to its closest selected airport. From Paraguay to Palau, it all connects. (Open this image in a new window for the best viewing experience.)
+								</p>							
+								<img src="../images/airports/airports.png" alt="" style="object-fit: cover; width: 100%"/>
+								<br><br>
+								<p>What an incredible journey it's been. In Part Three, though, we go one level deeper. Meet me in Tehran on Valentine's Day. <span style="color: #fff01f">∎</span></p>
+								<hr>
+								<sup id="fn1" class="anchor">1. Which presents the classic math problem: if Karalo Maibuca ran from Funafuti to Paris in a straight line at the same pace as he ran the 100 meters, how long would it take? The answer: 20 days, 6 hours, 52 minutes, and 3 seconds. <a href="#ref1" title="Jump back to footnote 1 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn2" class="anchor">2. Sidenote: imagine how I felt after spending a week putting 5,000 flights in a spreadsheet only to find out that the problem I was trying to solve was NP-hard. <a href="#ref2" title="Jump back to footnote 2 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn3" class="anchor">3. If you count seasonal flights, Rome makes this list as well, with flights to Perth, Australia in addition to airports on five other continents. <a href="#ref3" title="Jump back to footnote 3 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn4" class="anchor">4. Note that while China is colored blue here, we don't actually have a connection between Nadi and Beijing yet. Nadi's Chinese connection is through Hong Kong. By the way, China could also be colored South African green &ndash; but Johannesburg has flights to Guangzhou, not Beijing. <a href="#ref4" title="Jump back to footnote 4 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn5" class="anchor">5. There's actually a name for the route that includes the Guam-Micronesia service: the <a href="https://en.wikipedia.org/wiki/Island_Hopper">Island Hopper</a>. This route runs from Guam to Honolulu (and back), making three stops in Micronesia and two more in the Marshall Islands on the way. <a href="#ref5" title="Jump back to footnote 5 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn6" class="anchor">6. Not to be confused with Panama City, Florida, whose airport code is ECP (<a href="https://www.air-port-codes.com/airport-info/ECP/">apparently</a> a contrived acronym for "Everyone Can Party"). <a href="#ref6" title="Jump back to footnote 6 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn7" class="anchor">7. Turpial was one of the first airlines to accept <a href="https://simpleflying.com/turpial-airlines-bitcoin-payments/">bitcoin</a> as payment. <a href="#ref7" title="Jump back to footnote 7 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn8" class="anchor">8. Named as an homage to THE Ohio State University. Actually, though, The Gambia added the "the" to its name after independence because the prime minister was worried people would <a href="https://www.theguardian.com/society/2017/jan/22/the-gambia-not-to-be-confused-with-zambia">confuse it with Zambia</a>. The more you know. <a href="#ref8" title="Jump back to footnote 8 in the text.">↩</a></sup>
+								<br>
+								<sup id="fn9" class="anchor">9. What TAP Air Portugal does add is redundancy. Like the name "PVP Productions," where the second P stands for "Productions," the name "TAP Air Portugal" is an example of <a href="https://en.wikipedia.org/wiki/RAS_syndrome">RAS syndrome</a>, which is the redundant use of a word from an acronym. TAP Air Portugal actually takes this one step further and does it over multiple languages: "TAP" stands for "Transportes Aéreos Portugueses," which translates to "Portuguese Air Transport." So the airline's full name is "Portuguese Air Transport Air Portugal." Exquisite. <a href="#ref9" title="Jump back to footnote 9 in the text.">↩</a></sup>
+								<hr>
+								<div class="acknowledgments">
+									<p>
+										I absolutely cannot wait for you to see what's in store in Part Three! Before next week, though, a few acknowledgments are in order.
+									</p>
+									<p>
+										Firstly, thanks to <a href="https://www.linkedin.com/in/ashish-subramanian/">Ashish Subramanian</a> for originally coming up with the idea for this problem in 2020, and to <a href="https://www.linkedin.com/in/avi-goel/">Avi Goel</a>, <a href="https://www.linkedin.com/in/nishaanth-krishnan/">Nishaanth Krishnan</a>, <a href="https://www.linkedin.com/in/saketmp/">Saket Pochiraju</a>, and <a href="https://www.linkedin.com/in/jonathan-song-209448251/">Jonathan Song</a> for their work on the initial solution attempt back then. This project wouldn't have happened without them.
+									</p>
+									<p>
+										As for the data: as referenced in Part One, basic details for the 4,564 flights used to solve this problem were sourced from <a href="https://www.flightradar24.com/data/airports">Flightradar24</a> and merged with the freely available <a href="https://www.partow.net/miscellaneous/airportdatabase/">Global Airport Database</a> using airport codes. You can find and download my full dataset <a href="https://docs.google.com/spreadsheets/d/1bqDcxkEb4zqfJTBj9NAvh2xv4VD63NLW6pSsdT7PbuQ/edit?usp=sharing">here</a>. Note that this dataset reflects the network of regularly scheduled international flights as of January 2025, and airlines add or subtract routes all the time. The answer to this problem, however, shouldn't change in the short term. (Seasonal and charter flights were excluded due to irregularity.)
+									</p>
+									<p>
+										And the visualizations! All of the interactive maps (route maps and choropleths) were made with <a href="https://github.com/plotly/plotly.js">Plotly.js</a>. Again, note that the country boundaries on Plotly maps are sourced from <a href="https://www.naturalearthdata.com/">Natural Earth</a>, whose <a href="https://www.naturalearthdata.com/about/disputed-boundaries-policy/">official policy</a> on disputed boundaries includes Crimea as part of Russia, Somaliland as its own independent state, and most of Western Sahara as contiguous with Morocco; this should not be taken as a representation of the opinion of PVP Productions. The final composite flight map was made with <a href="https://www.canva.com">Canva</a>, built on top of a map made with <a href="https://plotly.com/python/">Plotly in Python</a>. As always, all code used on this website is available on <a href="https://github.com/pvar37/website/tree/master/pvp">GitHub</a>.
+									</p>
+									<p>Part Three, "The Wrong Brothers," drops Friday, February 14. See you there.</p>
+								</div>
+							</section>
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; 2025 PVP PRODUCTIONS. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="https://d3js.org/d3.v7.min.js"></script>
+			<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+			<script src="../airports/js/main.js"></script>
+			<script src="js/main.js"></script>
+            <script src="js/choropleths.js"></script>
+            <script src="js/flights.js"></script>
+			<script src="../../assets/js_pvp/jquery.min.js"></script>
+			<script src="../../assets/js_pvp/jquery.scrolly.min.js"></script>
+			<script src="../../assets/js_pvp/jquery.dropotron.min.js"></script>
+			<script src="../../assets/js_pvp/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js_pvp/browser.min.js"></script>
+			<script src="../../assets/js_pvp/breakpoints.min.js"></script>
+			<script src="../../assets/js_pvp/util.js"></script>
+			<script src="../../assets/js_pvp/main.js"></script>
+
+	</body>
+</html>

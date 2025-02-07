@@ -41,7 +41,7 @@ d3.csv(data_path, row => {
     showlegend: false,
     geo: {
         lakecolor: 'white',
-        showlakes: true,
+        showlakes: false,
         showland: true,
         subunitcolor: 'white',
         resolution: 110,

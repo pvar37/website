@@ -12,6 +12,8 @@ document.write('\
                             <ul>\
                                 <li><a href="/pvp/i-found-every-international-flight/">I. EVERY INTL. FLIGHT</a></li>\
                                 <li><a href="/pvp/how-to-fly-to-every-country/">II. FLYING TO EVERY COUNTRY</a></li>\
+                                <li><a href="/pvp/the-wrong-brothers/">III. THE WRONG BROTHERS</a></li>\
+                                <li><a href="/pvp/flight-playground/">FLIGHT PLAYGROUND</a></li>\
                             </ul>\
                         </li>\
                         <li><a href="/pvp/moldova-3-poland-2.html">MOLDOVA 3, POLAND 2</a></li>\

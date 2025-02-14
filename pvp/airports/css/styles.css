@@ -31,6 +31,11 @@ figcaption {
     padding-right: 20px;
     line-height: 1.5em;
 }
+select {
+    font-family: 'Barlow';
+    margin: 0.5em 0 0 20px;
+    width: auto;
+}
 div[class=plot-container] {
     border-style: solid;
     border-color: white;
@@ -64,6 +69,10 @@ div[class=plot-container] {
         margin: 0 0 0 0;
         padding-left: 8px;
         padding-right: 8px;
+    }
+    select {
+        margin: 0.5em 0 0 8px;
+        font-size: 0.7em;
     }
     div[class=plot-container] {
         border-width: 2px;

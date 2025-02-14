@@ -137,10 +137,10 @@ function usaMap(routes) {
     newarkData = routes.filter(row => row.orig_air === "Newark")
     sanfranData = routes.filter(row => row.orig_air === "San Francisco")
     dataSources = [miamiData, newyorkData, honoluluData, newarkData, sanfranData]
-    usaColors = ["#0bf446", "#ff6600", "#26f7fd", "violet", "#e20010"]
+    usaColors = ["#d1feb8", "#f8c57c", "#d5f6fb", "#ebccff", "#f688d0"]
     let usaMapData = []
     for (i = 0; i < 5; i++) {
-        usaMapData.push({'colorscale': [[0, "#fff01f"], [1, "#34858c"]],
+        usaMapData.push({'colorscale': [[0, "#b31942"], [1, "#0a3161"]],
         'hoverinfo': 'skip',
         'locationmode': 'ISO-3',
         'locations': dataSources[i].map(row => row.dest_iso).concat("USA"),
@@ -223,7 +223,7 @@ function usaMap(routes) {
         showocean: true
         },
     hoverlabel: {
-        font: {family: 'Barlow'}
+        font: {family: 'Barlow', size: 13}
     },
     margin: {l: 10, r: 10, b: 0, t: 0},
     plot_bgcolor: '#1c1d26',
@@ -241,6 +241,7 @@ function usaMap(routes) {
         // Define marker size based on screen width
         let markerSize = width > 550 ? 7 : 4; // Larger on desktop, smaller on mobile
         let lineWidth = width > 550 ? 1 : 0.5;
+        let fontSize = width > 550 ? 13 : 8;
 
         // Update the figure with new marker size
         Plotly.restyle('usa-map', {
@@ -253,7 +254,10 @@ function usaMap(routes) {
         Plotly.restyle('usa-map', {
             'marker.size': markerSize * 10/7,
             'marker.line.width': markerSize * 10/7 / 4.5
-        }, [usaMapData.length - 5, usaMapData.length - 1]);
+        }, range(usaMapData.length - 5, usaMapData.length - 1));
+        layout.hoverlabel.font.size = fontSize;
+        Plotly.relayout('usa-map', layout); 
+        
     }
 
     // Listen to window resize events
@@ -265,16 +269,18 @@ function usaMap(routes) {
 
 function franceMap(routes) {
     franceData = routes.filter(row => row.orig_cntry === "France")
-    console.log(usaData)
+    console.log(franceData);
     parisData = routes.filter(row => row.orig_air === "Paris")
     guadeloupeData = routes.filter(row => row.orig_air === "Pointe-à-Pitre")
     mayotteData = routes.filter(row => row.orig_air === "Mayotte")
     martiniqueData = routes.filter(row => row.orig_air === "Martinique")
-    dataSources = [parisData, guadeloupeData, mayotteData, martiniqueData]
-    franceColors = ["white", "#32a2e0", "violet", "#00a650"]
+    orlyData = routes.filter(row => row.orig_air === "Paris-Orly")
+    mulhouseData = routes.filter(row => row.orig_air === "Mulhouse")
+    dataSources = [parisData, guadeloupeData, mayotteData, martiniqueData, orlyData, mulhouseData]
+    franceColors = ["white", "lightgreen", "orange", "pink", "cyan", "violet"]
     let franceMapData = []
-    for (i = 0; i < 4; i++) {
-        franceMapData.push({'colorscale': [[0, "#E1000F"], [1, "#34858c"]],
+    for (i = 0; i < 6; i++) {
+        franceMapData.push({'colorscale': [[0, "#000091"], [1, "#E1000F"]],
         'hoverinfo': 'skip',
         'locationmode': 'ISO-3',
         'locations': dataSources[i].map(row => row.dest_iso).concat("FRA"),
@@ -282,7 +288,7 @@ function franceMap(routes) {
         'z': Array(dataSources[i].length).fill(1).concat(0),
         'type': 'choropleth'})
     }
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 6; i++) {
         dataSources[i].forEach((row) => {
             var flight = {
                 hoverinfo: 'skip',
@@ -296,7 +302,7 @@ function franceMap(routes) {
             franceMapData.push(flight);
         });
     }
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 6; i++) {
         dataSources[i].forEach((row) => {
             var airport = {
                 hoverinfo: 'text',
@@ -314,7 +320,7 @@ function franceMap(routes) {
             franceMapData.push(airport);
         });
     }
-    for (i = 3; i >= 0; i--) {
+    for (i = 5; i >= 0; i--) {
         var airport = {
             hoverinfo: 'text',
             lat: [dataSources[i][0].orig_lat],
@@ -357,7 +363,7 @@ function franceMap(routes) {
         showocean: true
         },
     hoverlabel: {
-        font: {family: 'Barlow'}
+        font: {family: 'Barlow', size: 13}
     },
     margin: {l: 10, r: 10, b: 0, t: 0},
     plot_bgcolor: '#1c1d26',
@@ -375,19 +381,22 @@ function franceMap(routes) {
         // Define marker size based on screen width
         let markerSize = width > 550 ? 7 : 4; // Larger on desktop, smaller on mobile
         let lineWidth = width > 550 ? 1 : 0.5;
+        let fontSize = width > 550 ? 13 : 8;
 
         // Update the figure with new marker size
         Plotly.restyle('france-map', {
             'line.width': lineWidth
-        }, range(4, franceData.length + 3));
+        }, range(6, franceData.length + 5));
         Plotly.restyle('france-map', {
             'marker.size': markerSize,
             'marker.line.width': markerSize / 4.5
-        }, range(franceData.length + 4, 2 * franceData.length + 3));
+        }, range(franceData.length + 6, 2 * franceData.length + 5));
         Plotly.restyle('france-map', {
             'marker.size': markerSize * 10/7,
             'marker.line.width': markerSize * 10/7 / 4.5
-        }, [franceMapData.length - 4, franceMapData.length - 1]);
+        }, range(franceMapData.length - 6, franceMapData.length - 1));
+        layout.hoverlabel.font.size = fontSize;
+        Plotly.relayout('france-map', layout); 
     }
 
     // Listen to window resize events
@@ -406,10 +415,10 @@ function russiaMap(routes) {
     iktData = routes.filter(row => row.orig_air === "Irkutsk")
     vvoData = routes.filter(row => row.orig_air === "Vladivostok")
     dataSources = [svoData, dmeData, vkoData, iktData, vvoData]
-    russiaColors = ["white", "#A8002C", "#ffd700", "orange", "violet"]
+    russiaColors = ["white", "pink", "#f8c57c", "#d4c6aa", "violet"]
     let russiaMapData = []
     for (i = 0; i < 5; i++) {
-        russiaMapData.push({'colorscale': [[0, "#d62718"], [1, "#34858c"]],
+        russiaMapData.push({'colorscale': [[0, "#d62718"], [1, "#0036a7"]],
         'hoverinfo': 'skip',
         'locationmode': 'ISO-3',
         'locations': dataSources[i].map(row => row.dest_iso).concat("RUS"),
@@ -443,7 +452,7 @@ function russiaMap(routes) {
                     size: 7
                 },
                 name: '',
-                text: "<b>" + row.dest_cntry + "</b><br>" + row.dest_name + " (" + row.dest_code + ")" + "<br><b>" + row.orig_air + "</b>-" + row.dest_air,
+                text: "<b>" + row.dest_cntry + "</b><br>" + row.dest_name + " (" + row.dest_code + ")" + "<br><b>" + (row.orig_code === "SVO" ? "Moscow-Sheremetyevo" : row.orig_air) + "</b>-" + row.dest_air,
                 type: 'scattergeo'
             }
             russiaMapData.push(airport);
@@ -460,7 +469,7 @@ function russiaMap(routes) {
                 size: 10
             },
             name: '',
-            text: "<b>" + dataSources[i][0].orig_cntry + "</b><br>" + dataSources[i][0].orig_name + " (" + dataSources[i][0].orig_code + ")" + "<br>" + (dataSources[i][0].orig_air === "Moscow" ? "Moscow-Sheremetyevo" : dataSources[i][0].orig_air),
+            text: "<b>" + dataSources[i][0].orig_cntry + "</b><br>" + dataSources[i][0].orig_name + " (" + dataSources[i][0].orig_code + ")" + "<br>" + (dataSources[i][0].orig_code === "SVO" ? "Moscow-Sheremetyevo" : dataSources[i][0].orig_air),
             type: 'scattergeo'
         }
         russiaMapData.push(airport);
@@ -492,7 +501,7 @@ function russiaMap(routes) {
         showocean: true
         },
     hoverlabel: {
-        font: {family: 'Barlow'}
+        font: {family: 'Barlow', size: 13}
     },
     margin: {l: 10, r: 10, b: 0, t: 0},
     plot_bgcolor: '#1c1d26',
@@ -510,6 +519,7 @@ function russiaMap(routes) {
         // Define marker size based on screen width
         let markerSize = width > 550 ? 7 : 4; // Larger on desktop, smaller on mobile
         let lineWidth = width > 550 ? 1 : 0.5;
+        let fontSize = width > 550 ? 13 : 8;
 
         // Update the figure with new marker size
         Plotly.restyle('russia-map', {
@@ -522,7 +532,9 @@ function russiaMap(routes) {
         Plotly.restyle('russia-map', {
             'marker.size': markerSize * 10/7,
             'marker.line.width': markerSize * 10/7 / 4.5
-        }, [russiaMapData.length - 5, russiaMapData.length - 1]);
+        }, range(russiaMapData.length - 5, russiaMapData.length - 1));
+        layout.hoverlabel.font.size = fontSize;
+        Plotly.relayout('russia-map', layout); 
     }
 
     // Listen to window resize events

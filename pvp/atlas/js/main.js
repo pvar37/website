@@ -45,7 +45,7 @@ d3.csv(data_path, row => {
             color: 'white',
             size: width > 550 ? 14 : 8
         },
-        margin: width > 550 ? {l: 10, r: 10, b: 20, t: 20} : {l: 10, r: 10, b: 10, t: 10},
+        margin: width > 550 ? {l: 10, r: 10, b: 20, t: 20} : {l: 10, r: 10, b: 10, t: 40},
         plot_bgcolor: '#1c1d26',
         paper_bgcolor: '#1c1d26',
         height: width > 550 ? width * 0.6 : width

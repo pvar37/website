@@ -41,6 +41,7 @@ document.write('\
                         <li><a href="/pvp/speedrunning-vienna.html">SPEEDRUNNING VIENNA</a></li>\
                     </ul>\
                 </li>\
+                <li><a href="/pvp/atlas/">ATLAS</a></li>\
                 <li><a href="/pvp/what.html">WHAT</a></li>\
             </ul>\
         </nav>\

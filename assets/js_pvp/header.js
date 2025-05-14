@@ -30,6 +30,7 @@ document.write('\
                 <li>\
                     <a href="#">DISPATCHES</a>\
                     <ul>\
+                        <li><a href="/pvp/one-song-in-every-language/">ONE SONG IN EVERY LANGUAGE</a></li>\
                         <li><a href="/pvp/far-from-home.html">FAR FROM HOME</a></li>\
                         <li>\
                             <a href="/pvp/predicting-euro-2024.html">EURO 2024 COVERAGE</a>\

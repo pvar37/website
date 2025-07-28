@@ -4,3 +4,9 @@
 .Ruserdata
 .DS_Store
 images/.DS_Store
+.bash_history
+.bash_logout
+.bashrc
+.gitconfig
+.zshrc
+misc

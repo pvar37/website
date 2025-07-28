@@ -1,6 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
-@import url("https://fonts.googleapis.com/css?family=Barlow:300,400,700,900,300italic,700italic");
+@import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,900,300italic,700italic");
 
 /*
 	Dopetrope by HTML5 UP
@@ -1577,6 +1577,7 @@ input, select, textarea {
 		background: #fff;
 		border-bottom: solid 1px #ccc;
 		padding: 2.75em 1.75em 2.3em 1.75em;
+		height: 100%;
 	}
 
 		.box .image.featured {

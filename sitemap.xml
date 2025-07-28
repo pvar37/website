@@ -4,7 +4,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://www.pranayvarada.com/</loc>
-        <lastmod>2025-07-24</lastmod>
+        <lastmod>2025-07-27</lastmod>
         <changefreq>yearly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -19,7 +19,7 @@
 
     <url>
         <loc>https://www.pranayvarada.com/projects/</loc>
-        <lastmod>2025-07-24</lastmod>
+        <lastmod>2025-07-27</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -34,7 +34,7 @@
 
     <url>
         <loc>https://www.pranayvarada.com/projects/avertle/</loc>
-        <lastmod>2025-07-24</lastmod>
+        <lastmod>2025-07-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>

@@ -7,6 +7,7 @@ document.write('\
                 <li>\
                     <a href="#">FEATURES</a>\
                     <ul>\
+                        <li><a href="/pvp/speedrunning-boston/">SPEEDRUNNING BOSTON</a></li>\
                         <li>\
                             <a href="/pvp/i-found-every-international-flight/">THE AVIATION GAME</a>\
                             <ul>\

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="We speedran the Boston subway system">
+    <meta property="og:url" content="https://www.pranayvarada.com/pvp/speedrunning-boston/">
+    <meta property="og:image" content="https://www.pranayvarada.com/images/mbta/intro.jpeg">
+    <meta property="og:description" content="We speedran the Boston subway system">
+    <meta property="article:author" content="Pranay Varada">
+    <meta property="article:published_time" content="2026-01-05T08:00-05:00">
+    <title>We speedran the Boston subway system</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../../assets/css/pvp.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="../../assets/mgweb_pvp.png">
+    <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-globe-minimap@1.2.0/dist/bundle.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELB9NNSQXG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ELB9NNSQXG');
+    </script> -->
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="page-wrapper">
+    <script src="/assets/js_pvp/header.js"></script>
+    </div>
+
+    <div id="scroll-blocker"></div>
+    <div id="map"></div>
+    <div id="story"></div>
+    
+    <script src="./config.js"></script>
+    <script>
+        var initLoad = true;
+        var layerTypes = {
+            'fill': ['fill-opacity'],
+            'line': ['line-opacity'],
+            'circle': ['circle-opacity', 'circle-stroke-opacity'],
+            'symbol': ['icon-opacity', 'text-opacity'],
+            'raster': ['raster-opacity'],
+            'fill-extrusion': ['fill-extrusion-opacity'],
+            'heatmap': ['heatmap-opacity']
+        }
+
+        var alignments = {
+            'left': 'lefty',
+            'center': 'centered',
+            'right': 'righty',
+            'full': 'fully'
+        }
+
+        function getLayerPaintType(layer) {
+            var layerType = map.getLayer(layer).type;
+            return layerTypes[layerType];
+        }
+
+        function setLayerOpacity(layer) {
+            var paintProps = getLayerPaintType(layer.layer);
+            paintProps.forEach(function (prop) {
+                var options = {};
+                if (layer.duration) {
+                    var transitionProp = prop + "-transition";
+                    options = { "duration": layer.duration };
+                    map.setPaintProperty(layer.layer, transitionProp, options);
+                }
+                if(layer.opacity === 1 && prop === "circle-opacity") {
+                    map.setPaintProperty(layer.layer, prop, [
+                        "match",
+                        ["get", "point-opacity"],
+                        ["0"],
+                        0,
+                        1
+                        ],
+                    options);
+                }
+                else {
+                    map.setPaintProperty(layer.layer, prop, layer.opacity, options);
+                }
+            });
+        }
+
+        var story = document.getElementById('story');
+        var features = document.createElement('div');
+        features.setAttribute('id', 'features');
+
+        var header = document.createElement('div');
+
+        if (config.title) {
+            var titleText = document.createElement('h1');
+            titleText.innerText = config.title;
+            header.appendChild(titleText);
+        }
+
+        if (config.subtitle) {
+            var subtitleText = document.createElement('h2');
+            subtitleText.innerText = config.subtitle;
+            header.appendChild(subtitleText);
+        }
+
+        if (config.byline) {
+            var bylineText = document.createElement('p');
+            bylineText.innerHTML = config.byline;
+            header.appendChild(bylineText);
+        }
+
+        if (config.subtextleft) {
+            var subTextLeft = document.createElement('p');
+            subTextLeft.innerHTML = config.subtextleft;
+            subTextLeft.setAttribute('id', 'subtext-left');
+            header.appendChild(subTextLeft);
+        }
+
+        if (config.subtextcenter) {
+            var subTextCenter = document.createElement('p');
+            subTextCenter.innerHTML = config.subtextcenter;
+            subTextCenter.setAttribute('id', 'subtext-center');
+            header.appendChild(subTextCenter);
+        }
+
+        if (config.subtextright) {
+            var subTextRight = document.createElement('p');
+            subTextRight.innerHTML = config.subtextright;
+            subTextRight.setAttribute('id', 'subtext-right');
+            header.appendChild(subTextRight);
+        }
+
+        if (header.innerText.length > 0) {
+            header.classList.add(config.theme);
+            header.setAttribute('id', 'map-header');
+            story.appendChild(header);
+        }
+
+        config.chapters.forEach((record, idx) => {
+            var container = document.createElement('div');
+            var chapter = document.createElement('div');
+
+            if (record.title) {
+                var title = document.createElement('h3');
+                var legnum = record.id.match(/\d+$/);
+                if (legnum)
+                    title.innerHTML = "<span style=\"color: #fff01f\"> LEG " + legnum + "</span><br>" + record.title;
+                else if (record.id === 'base-camp' || record.id === 'conclusion')
+                    title.innerHTML = record.title;
+                else
+                    title.innerText = record.title;
+                chapter.appendChild(title);
+            }
+
+            if (record.subtitle) {
+                var subtitle = document.createElement('h4');
+                subtitle.innerHTML= record.subtitle;
+                chapter.appendChild(subtitle);
+            }
+
+            if (record.image) {
+                var image = new Image();
+                image.src = record.image;
+                chapter.appendChild(image);
+            }
+
+            if (record.description) {
+                var story = document.createElement('p');
+                story.innerHTML = record.description;
+                chapter.appendChild(story);
+            }
+
+            container.setAttribute('id', record.id);
+            container.classList.add('step');
+            if (idx === 0) {
+                container.classList.add('active');
+            }
+
+            chapter.classList.add(config.theme);
+            container.appendChild(chapter);
+            container.classList.add(alignments[record.alignment] || 'centered');
+            if (record.hidden) {
+                container.classList.add('hidden');
+            }
+            features.appendChild(container);
+        });
+
+        story.appendChild(features);
+
+        mapboxgl.accessToken = config.accessToken;
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: config.style,
+            center: config.chapters[0].location.center,
+            zoom: config.chapters[0].location.zoom,
+            bearing: config.chapters[0].location.bearing,
+            pitch: config.chapters[0].location.pitch,
+            interactive: true,
+            projection: config.projection
+        });
+
+        if (config.inset) {
+            map.addControl(
+                new GlobeMinimap({ ...config.insetOptions }),
+                config.insetPosition
+            );
+        }
+
+        if (config.showMarkers) {
+            var marker = new mapboxgl.Marker({ color: config.markerColor });
+            marker.setLngLat(config.chapters[0].location.center).addTo(map);
+        }
+
+        var scroller = scrollama();
+
+
+        map.on("load", function () {
+            if (config.use3dTerrain) {
+                map.addSource('mapbox-dem', {
+                    'type': 'raster-dem',
+                    'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                    'tileSize': 512,
+                    'maxzoom': 14
+                });
+                map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+                map.addLayer({
+                    'id': 'sky',
+                    'type': 'sky',
+                    'paint': {
+                        'sky-type': 'atmosphere',
+                        'sky-atmosphere-sun': [0.0, 0.0],
+                        'sky-atmosphere-sun-intensity': 15
+                    }
+                });
+
+                map.addControl(new mapboxgl.ScaleControl({unit: 'imperial'}), 'bottom-right');
+                map.addControl(new mapboxgl.NavigationControl({visualizePitch: true}), 'bottom-right');
+
+                const hash = window.location.hash;
+
+                if (!hash || hash === '#') {
+                    map.setLayoutProperty('mbta-order', 'visibility', 'none');
+                    map.setLayoutProperty('mbta_path_lines', 'visibility', 'none');
+                    map.setLayoutProperty('base-camp-text', 'visibility', 'none');
+                    map.setLayoutProperty('base-camp', 'visibility', 'none');
+                    for (let leg = 1; leg <= 11; leg++) {
+                        map.setLayoutProperty('mbta-path-' + leg, 'visibility', 'none');
+                        map.setLayoutProperty('mbta-path-' + leg + '-stations', 'visibility', 'none');
+                        map.setLayoutProperty('mbta-path-' + leg + '-lines', 'visibility', 'none');
+                    }
+                }
+                else if (hash === '#conclusion') {
+                    map.setStyle('mapbox://styles/pvar37/cmcgpjcbn009201s7goxfhrxg');
+                    map.once('style.load', () => {
+                        for (leg = 12; leg <= 23; leg++) {
+                            setLayerOpacity({
+                                layer: 'mbta-path-' + leg,
+                                opacity: 0,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'mbta-path-' + leg + "-stations",
+                                opacity: 0,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'mbta-path-' + leg + "-lines",
+                                opacity: 0,
+                                duration: 0
+                            });
+                        }
+                    });
+                }
+                else {
+                    const initialLegString = hash.replace('#leg-', '');
+                    const initialLeg = parseInt(initialLegString);
+
+                    for (let leg = 1; leg <= 23; leg++) {
+                        const pathLayer = 'mbta-path-' + leg;
+                        const stationsLayer = 'mbta-path-' + leg + "-stations";
+                        const linesLayer = 'mbta-path-' + leg + "-lines";
+                    }
+                    map.setLayoutProperty('mbta-order', 'visibility', 'none');
+                    map.setLayoutProperty('base-camp-text', 'visibility', 'none');
+                    map.setLayoutProperty('base-camp', 'visibility', 'none');
+                }
+            };
+
+            scroller
+                .setup({
+                    step: '.step',
+                    offset: 0.5,
+                    progress: true
+                })
+                .onStepEnter(async response => {
+                    var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
+                    var chapter = config.chapters[current_chapter];
+
+                    response.element.classList.add('active');
+                    const isMobile = window.innerWidth < 750;
+                    const mobileZoomOffset = 0.93;
+                    const currentZoom = isMobile ? chapter.location.zoom * mobileZoomOffset : chapter.location.zoom;
+                    map.flyTo({
+                        ...chapter.location,
+                        zoom: currentZoom,
+                        offset: isMobile ? [-window.innerWidth * 0.5, 0] : [0, 0],
+                        essential: true
+                    });
+
+                    if (config.showMarkers) {
+                        marker.setLngLat(chapter.location.center);
+                    }
+                    if (chapter.onChapterEnter.length > 0) {
+                        if (chapter.id === 'conclusion') {
+                            if (map.style.globalId === 'mapbox://styles/pvar37/cmc3uamtp021n01s2c6lt7k52') {
+                                map.setStyle('mapbox://styles/pvar37/cmcgpjcbn009201s7goxfhrxg');
+                                map.once('style.load', () => {
+                                    for (leg = 12; leg <= 23; leg++) {
+                                        setLayerOpacity({
+                                            layer: 'mbta-path-' + leg,
+                                            opacity: 0,
+                                            duration: 0
+                                        });
+                                        setLayerOpacity({
+                                            layer: 'mbta-path-' + leg + "-stations",
+                                            opacity: 0,
+                                            duration: 0
+                                        });
+                                        setLayerOpacity({
+                                            layer: 'mbta-path-' + leg + "-lines",
+                                            opacity: 0,
+                                            duration: 0
+                                        });
+                                    }
+                                });
+                            }
+                            else {
+                                for (leg = 12; leg <= 23; leg++) {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                }
+                            }
+                            chapter.onChapterEnter.forEach(setLayerOpacity);
+                            history.replaceState(null, null, '#conclusion');
+                        }
+                        else {
+                            map.setLayoutProperty('mbta_path_lines', 'visibility', 'visible');
+                            map.setLayoutProperty('base-camp-text', 'visibility', 'visible');
+                            map.setLayoutProperty('base-camp', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-order', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-1', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-2', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-3', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-4', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-5', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-6', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-7', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-8', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-9', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-10', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-11', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-1-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-2-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-3-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-4-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-5-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-6-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-7-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-8-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-9-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-10-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-11-stations', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-1-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-2-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-3-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-4-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-5-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-6-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-7-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-8-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-9-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-10-lines', 'visibility', 'visible');
+                            map.setLayoutProperty('mbta-path-11-lines', 'visibility', 'visible');
+                            chapter.onChapterEnter.forEach(setLayerOpacity);
+                            for (leg = 1; leg <= 11; leg++) {
+                                setLayerOpacity({
+                                    layer: 'mbta-path-' + leg,
+                                    opacity: 0,
+                                    duration: 0
+                                });
+                                setLayerOpacity({
+                                    layer: 'mbta-path-' + leg + "-stations",
+                                    opacity: 0,
+                                    duration: 0
+                                });
+                                setLayerOpacity({
+                                    layer: 'mbta-path-' + leg + "-lines",
+                                    opacity: 0,
+                                    duration: 0
+                                });
+                            }
+                        }
+                    }
+                    else if (current_chapter <= 13 && map.style.globalId === 'mapbox://styles/pvar37/cmcgpjcbn009201s7goxfhrxg') {
+                        map.setStyle('mapbox://styles/pvar37/cmc3uamtp021n01s2c6lt7k52');
+                        map.once('style.load', () => {
+                            legnum = chapter.id.match(/\d+$/)[0];
+                            for (leg = 1; leg <= 11; leg++) {
+                                if (leg === parseInt(legnum)) {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+
+                                    history.replaceState(null, null, '#leg-' + leg);
+                                }
+                                else {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                }
+                            }
+                            setLayerOpacity({
+                                layer: 'mbta_stations',
+                                opacity: 1,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'mbta_path_lines',
+                                opacity: 0,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'mbta_lines',
+                                opacity: 0.5,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'base-camp-text',
+                                opacity: 0,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'base-camp',
+                                opacity: 0,
+                                duration: 0
+                            });
+                            map.setLayoutProperty('mbta-order', 'visibility', 'none');
+                        });
+                    }
+                    else if (current_chapter > 13 && map.style.globalId === 'mapbox://styles/pvar37/cmc3uamtp021n01s2c6lt7k52') {
+                        map.setStyle('mapbox://styles/pvar37/cmcgpjcbn009201s7goxfhrxg');
+                        map.once('style.load', () => {
+                            legnum = chapter.id.match(/\d+$/)[0];
+                            for (leg = 12; leg <= 23; leg++) {
+                                if (leg === parseInt(legnum)) {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+
+                                    history.replaceState(null, null, '#leg-' + leg);
+                                }
+                                else {
+                                    setLayerOpacity({
+                                            layer: 'mbta-path-' + leg,
+                                            opacity: 0,
+                                            duration: 0
+                                        });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                }
+                            }
+                            setLayerOpacity({
+                                layer: 'mbta_stations',
+                                opacity: 1,
+                                duration: 0
+                            });
+                            setLayerOpacity({
+                                layer: 'mbta_lines',
+                                opacity: 0.5,
+                                duration: 0
+                            });
+                        });
+                    }
+                    else {
+                        legnum = chapter.id.match(/\d+$/)[0];
+                        if(map.style.globalId === 'mapbox://styles/pvar37/cmc3uamtp021n01s2c6lt7k52') {
+                            for (leg = 1; leg <= 11; leg++) {
+                                if (leg === parseInt(legnum)) {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+
+                                    history.replaceState(null, null, '#leg-' + leg);
+                                }
+                                else {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                }
+                            }
+                            map.setLayoutProperty('mbta-order', 'visibility', 'none');
+                        }
+                        else {
+                            for (leg = 12; leg <= 23; leg++) {
+                                if (leg === parseInt(legnum)) {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 1,
+                                        duration: 0
+                                    });
+
+                                    history.replaceState(null, null, '#leg-' + leg);
+                                }
+                                else {
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg,
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-stations",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                    setLayerOpacity({
+                                        layer: 'mbta-path-' + leg + "-lines",
+                                        opacity: 0,
+                                        duration: 0
+                                    });
+                                }
+                            }
+                        }
+                        setLayerOpacity({
+                            layer: 'mbta_stations',
+                            opacity: 0,
+                            duration: 0
+                        });
+                        setLayerOpacity({
+                            layer: 'mbta_path_lines',
+                            opacity: 0,
+                            duration: 0
+                        });
+                        setLayerOpacity({
+                            layer: 'mbta_lines',
+                            opacity: 0.5,
+                            duration: 0
+                        });
+                    }
+                    if (chapter.callback) {
+                        window[chapter.callback]();
+                    }
+                    if (chapter.rotateAnimation) {
+                        map.once('moveend', () => {
+                            const rotateNumber = map.getBearing();
+                            map.rotateTo(rotateNumber + 180, {
+                                duration: 30000, easing: function (t) {
+                                    return t;
+                                }
+                            });
+                        });
+                    }
+                    if (config.auto) {
+                        var next_chapter = (current_chapter + 1) % config.chapters.length;
+                        map.once('moveend', () => {
+                            document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
+                        });
+                    }
+                })
+                .onStepExit(response => {
+                    var chapter = config.chapters.find(chap => chap.id === response.element.id);
+                    response.element.classList.remove('active');
+                    if (chapter.onChapterExit.length > 0) {
+                        chapter.onChapterExit.forEach(setLayerOpacity);
+                    }
+                });
+
+
+            if (config.auto) {
+                document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
+            }
+        });
+        
+        let popup;
+
+        map.on('load', function () {
+        const showPopup = (e) => {
+            const features = map.queryRenderedFeatures(e.point, {
+            layers: ['mbta_stations']
+            });
+
+            if (features.length > 0) {
+            const feature = features[0];
+            const coordinates = feature.geometry.coordinates.slice();
+            const stopName = feature.properties.stop_name;
+            const stopColor = feature.properties.color;
+            const linesServed = feature.properties.lines_specific;
+
+            if (!popup || popup.getLngLat().lng !== coordinates[0] || popup.getLngLat().lat !== coordinates[1]) {
+                if (popup) popup.remove();
+                popup = new mapboxgl.Popup({
+                className: 'floating-label',
+                closeButton: false,
+                closeOnClick: false,
+                offset: [10, 0],
+                anchor: 'left'
+                })
+                .setLngLat(coordinates)
+                .setHTML(`
+                <div style="
+                    font-size: 14px;
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    color: ${stopColor};
+                    text-align: left;
+                    font-weight: 600;
+                ">
+                    ${stopName.toUpperCase()}
+                </div>
+                 <div style="
+                    font-size: 13px;
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    color: black;
+                    text-align: left;
+                    font-weight: 500;
+                ">
+                    ${linesServed}
+                </div>
+                `)
+                .addTo(map);
+            }
+
+            map.getCanvas().style.cursor = 'pointer';
+            } else {
+            hidePopup();
+            }
+        };
+
+        const hidePopup = () => {
+            if (popup) {
+            popup.remove();
+            popup = null;
+            }
+            map.getCanvas().style.cursor = '';
+        };
+
+        if (window.innerWidth >= 750) {
+            map.on('mousemove', showPopup);
+            map.on('mouseleave', 'mbta_stations', hidePopup);
+        } else {
+            map.on('click', showPopup);
+            map.on('click', function () {
+            if (popup) {
+                popup.remove();
+                popup = null;
+            }
+            });
+        }
+        });
+
+    </script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+    <script src="../../assets/js_pvp/jquery.min.js"></script>
+    <script src="../../assets/js_pvp/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js_pvp/jquery.dropotron.min.js"></script>
+    <script src="../../assets/js_pvp/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js_pvp/browser.min.js"></script>
+    <script src="../../assets/js_pvp/breakpoints.min.js"></script>
+    <script src="../../assets/js_pvp/util.js"></script>
+    <script src="../../assets/js_pvp/main.js"></script>
+
+</body>
+
+</html>

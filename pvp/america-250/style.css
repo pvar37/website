@@ -1,0 +1,590 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,900,300italic,700italic");
+
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
+        radial-gradient(circle at center, #ebdcb7 0%, #c4a77d 100%);
+    color: #3a2a18;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #5c4738;
+    background: transparent;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    color: #3a2a18;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Vintage Patriotic Theme for Header */
+.title-blue, .title-blue a {
+    color: #1b264f;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.title-pipe {
+    font-weight: 500;
+    color: #1b264f;
+    margin: 0 5px;
+}
+
+/* Deep vintage navy */
+.title-red {
+    color: #8b2621;
+}
+
+/* Faded rust red */
+.title-white {
+    color: #fcf6eb;
+    /* Ivory/Cream to act as the "white" */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    /* Shadow helps it pop off the parchment */
+    margin: 0 10px;
+}
+
+h2 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #5c4738;
+    margin-top: 10px;
+}
+
+#map-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 65vh;
+    /* Prevents the map from expanding past the screen bottom */
+    min-height: 400px;
+    /* Ensures it doesn't get too small on short screens */
+    margin: 10px auto;
+    border: 1px solid rgba(92, 71, 56, 0.3);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight lightening for the canvas */
+    overflow: hidden;
+    /* Clips anything that tries to zoom outside the box */
+    border-radius: 4px;
+}
+
+/* Forces the SVG to conform to the container */
+#map-container svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 15px auto 20px auto;
+    padding: 0 20px;
+    font-family: 'Georgia', serif;
+}
+
+input[type="number"] {
+    padding: 8px 12px;
+    border: 1px solid #8c7355;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-family: 'Georgia', sans-serif;
+    color: #3a2a18;
+    border-radius: 3px;
+    outline: none;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #5c4738;
+    color: #ebdcb7;
+    border: 1px solid #3a2a18;
+    font-family: 'Georgia', sans-serif;
+    text-transform: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #3a2a18;
+}
+
+#tooltip {
+    position: absolute;
+    /* Make sure there are no !important mobile overrides interfering */
+    opacity: 0;
+    visibility: hidden;
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"),
+        #f4ebd8;
+    border: 1px solid #8c7355;
+    padding: 15px;
+    pointer-events: auto;
+    border-radius: 2px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+
+    /* THE FIX: Hardcode the width so it never squishes/reflows text */
+    width: 300px;
+    z-index: 10;
+}
+
+.tooltip-img {
+    width: 100%;
+    /* THE FIX: Hardcode the height so JavaScript always knows how tall the box is before the image loads */
+    height: 160px;
+    object-fit: cover;
+    margin: 10px 0;
+    transform: scale(1.03);
+    border: none;
+}
+
+.tooltip-desc {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    color: #2c241b;
+}
+
+/* --- COMBINED TIMELINE & COLOR SCALE SLIDER --- */
+#timeline-container {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    justify-self: center;
+    /* Keeps it centered in the grid */
+}
+
+#timeline-label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3a2a18;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#timeline-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    /* The Magic: CSS gradient exactly matching your D3 Color Scale */
+    background: linear-gradient(to right, #cbb682 0%, #b05f4e 30%, #6b4c64 66%, #253494 100%);
+    height: 12px;
+    /* Taller to act as a proper legend */
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #5c4738;
+    margin-bottom: 5px;
+}
+
+.slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 11px;
+    color: #5c4738;
+    padding: 0 4px;
+    /* Keeps text aligned with the edge of the track */
+}
+
+/* Customizing the draggable "thumb" */
+#timeline-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f4ebd8;
+    /* Parchment color */
+    cursor: pointer;
+    border: 2px solid #3a2a18;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#timeline-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f4ebd8;
+    cursor: pointer;
+    border: 2px solid #3a2a18;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* --- INFO BUTTON --- */
+#info-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #5c4738;
+    color: #5c4738;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 16px;
+    font-style: italic;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#info-btn:hover {
+    background-color: #5c4738;
+    color: #ebdcb7;
+}
+
+/* --- ABOUT MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 38, 79, 0.4);
+    /* Vintage navy overlay */
+    backdrop-filter: blur(3px);
+    /* Slightly blurs the map behind it */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal-content {
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
+        #f4ebd8;
+    border: 2px solid #8c7355;
+    border-radius: 4px;
+    padding: 30px;
+    max-width: 450px;
+    width: 85%;
+    position: relative;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    line-height: 1.6;
+}
+
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #8c7355;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#close-modal:hover {
+    color: #8b2621;
+}
+
+/* --- LOADING OVERLAY --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
+        radial-gradient(circle at center, #ebdcb7 0%, #c4a77d 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(139, 38, 33, 0.2);
+    /* Faded red */
+    border-top-color: #8b2621;
+    /* Solid red spinner */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- TOOLTIP NAVIGATION --- */
+.tooltip-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #8c7355;
+}
+
+.nav-link {
+    color: #8b2621;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #1b264f;
+}
+
+.nav-link.disabled {
+    color: #a89f91;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* --- MOBILE RESPONSIVENESS (APP-LIKE UX) --- */
+@media (max-width: 768px) {
+
+    /* Lock the body to prevent the whole page from bouncing around */
+    body,
+    html {
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 1. Ultra-compact Header */
+    header {
+        padding: 15px 5px 10px 5px;
+        /* Increased top padding to 15px */
+        border-bottom: 2px solid #5c4738;
+        flex-shrink: 0;
+    }
+
+    .title-pipe {
+        display: none;
+        /* Hides the pipe on small screens */
+    }
+
+    .title-blue,
+    .title-red {
+        display: block;
+        /* Forces them onto their own separate lines */
+        line-height: 1.15;
+    }
+
+    .title-blue {
+        margin-bottom: 4px;
+        /* <-- ADD THIS: Creates breathing room between the lines */
+    }
+
+    h1 {
+        font-size: 22px;
+        letter-spacing: 1px;
+        padding: 0 30px;
+    }
+
+    h2 {
+        font-size: 12px;
+        /* Increased from 10px */
+        margin-top: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Shrink the info button and tuck it into the corner */
+    #info-btn {
+        top: 8px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+    }
+
+    /* 2. Structured Controls (Reordered Layout) */
+    #controls-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px 5px 15px;
+        /* <--- Changed the 3rd number (bottom padding) to 5px */
+        margin-bottom: 0;
+        /* <--- Overrides the desktop 25px gap */
+        gap: 15px 0;
+        flex-shrink: 0;
+    }
+
+    /* Top Row (Left): Search */
+    #search-panel {
+        order: 1;
+        /* Forces to the top left */
+        display: flex;
+        gap: 10px;
+        /* Space between input and Find button */
+    }
+
+    /* Top Row (Right): Reset Button */
+    #reset-btn {
+        order: 2;
+        /* Pulls it up past the timeline */
+    }
+
+    /* Bottom Row: Slider */
+    #timeline-container {
+        order: 3;
+        /* Pushes it to the bottom */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Bigger Touch Targets for Mobile */
+    input[type="number"],
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    /* Inside your @media (max-width: 768px) block */
+    input[type="number"] {
+        width: 40px;
+    }
+
+    /* Enlarge the slider thumb for thumbs! */
+    #timeline-slider::-webkit-slider-thumb {
+        width: 26px;
+        height: 26px;
+    }
+
+    #timeline-slider::-moz-range-thumb {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* 3. The Map Container (Fills middle space) */
+    #map-container {
+        flex-grow: 1;
+        /* Takes up all remaining space between controls and tooltip */
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0;
+        border: none;
+    }
+
+    #map-container svg {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* 4. The Permanent Scrollable Bottom Panel */
+    #tooltip {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        /* Fixed height bottom sheet */
+        height: 35vh;
+        min-height: 250px;
+        overflow-y: auto;
+        /* Lets user scroll long descriptions inside the panel */
+
+        padding: 15px;
+        margin: 0 !important;
+        border: none;
+        border-top: 2px dashed #8c7355;
+        background: rgba(244, 235, 216, 0.95);
+        /* Slightly opaque to hide map peeking underneath */
+        box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
+
+        flex-shrink: 0;
+
+        /* Instead of hiding entirely, we fade it to a placeholder state */
+        visibility: visible !important;
+        opacity: 1 !important;
+        transition: background-color 0.3s ease;
+    }
+
+    /* A pseudo-element to show a placeholder when empty */
+    #tooltip:empty::before {
+        content: "Tap an event on the map or use the timeline to explore...";
+        display: block;
+        text-align: center;
+        color: #8c7355;
+        font-style: italic;
+        margin-top: 40px;
+        font-family: 'Georgia', serif;
+    }
+
+    .tooltip-img {
+        height: 140px;
+        margin-bottom: 10px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        /* Reduces the bulky 30px desktop padding */
+        max-height: 85vh;
+        /* Prevents the box from ever being taller than the screen */
+        overflow-y: auto;
+        /* Adds an internal scrollbar if the screen is super tiny */
+    }
+
+    .modal-content p,
+    .modal-content ul {
+        font-size: 14px;
+        /* Drops from default 16px */
+        line-height: 1.5;
+        /* Tighter line spacing */
+        margin-bottom: 12px;
+    }
+
+    .modal-content h3 {
+        font-size: 20px !important;
+    }
+}

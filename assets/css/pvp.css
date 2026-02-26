@@ -1,6 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
-@import url("https://fonts.googleapis.com/css?family=Inconsolata:300,400,700,900,300italic,700italic");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:300,400,500,600,700,800,900,300italic,700italic");
 @import url("https://fonts.googleapis.com/css?family=Barlow:300,400,700,900,300italic,700italic");
 
 /*
@@ -3438,8 +3438,8 @@ input, select, textarea {
 			}
 		
 		.dropotron.level-1 {
-			left: -15em !important;
-			width: 240px;
+			left: -16.9em !important;
+			width: 270px;
 		}
 
 	body.landing .dropotron.level-0 {
@@ -4095,7 +4095,11 @@ input, select, textarea {
 
 						#navPanel .link.depth-0 {
 							color: #ffffff;
-							font-weight: 300;
+							font-weight: 600;
+						}
+
+						#navPanel .link.depth-1 {
+							font-weight: 400;
 						}
 
 						#navPanel .link .indent-1 {

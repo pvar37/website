@@ -18,7 +18,7 @@ const baseRadius = isMobile ? 11 : 5;
 const activeRadius = isMobile ? 16 : 10;
 
 function getEffectiveScale(k) {
-    return isMobile ? Math.pow(k, 0.7) : k;
+    return isMobile ? Math.pow(k, 0.85) : k;
 }
 
 const mapScale = isMobile ? 1080 : 1200;
@@ -47,6 +47,25 @@ function hideTooltip() {
     } else {
         tooltip.style("opacity", 0).style("visibility", "hidden");
     }
+}
+
+// --- CUSTOM NOTIFICATION LOGIC ---
+let notificationTimeout;
+
+function showNotification(message) {
+    const notif = document.getElementById("custom-notification");
+    if (!notif) return;
+
+    notif.innerText = message;
+    notif.classList.add("show");
+
+    // Clear any existing timeout so it doesn't fade out too early if they click twice
+    clearTimeout(notificationTimeout);
+
+    // Automatically fade out after 4 seconds
+    notificationTimeout = setTimeout(() => {
+        notif.classList.remove("show");
+    }, 4000);
 }
 
 function zoomed(event) {
@@ -288,7 +307,17 @@ window.loadEvent = function (year, nodeElement = null) {
 function performSearch() {
     const yearInput = document.getElementById('year-input').value;
     const year = parseInt(yearInput);
-    if (!window.eventsData || isNaN(year)) return alert("Please enter a valid year.");
+
+    if (!window.eventsData || isNaN(year)) {
+        return showNotification("Please enter a valid year.");
+    }
+
+    if (year === 2026) {
+        return showNotification("2026 marks America's 250th anniversary! This map chronicles the 250 years leading up to it. Try searching for a year between 1776 and 2025.");
+    } else if (year < 1776 || year > 2025) {
+        return showNotification("Please enter a year between 1776 and 2025.");
+    }
+
     window.loadEvent(year);
 }
 

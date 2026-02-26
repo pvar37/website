@@ -385,6 +385,39 @@ button:hover {
     pointer-events: none;
 }
 
+/* --- CUSTOM NOTIFICATION TOAST --- */
+#custom-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: #8b2621;
+    /* Matches your header red */
+    color: #ebdcb7;
+    /* Parchment color */
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(92, 71, 56, 0.4);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 90%;
+    pointer-events: none;
+    /* Lets users click "through" it if necessary */
+}
+
+/* The class we will add via JavaScript to animate it in */
+#custom-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
 /* --- MOBILE RESPONSIVENESS (APP-LIKE UX) --- */
 @media (max-width: 768px) {
 
@@ -586,5 +619,19 @@ button:hover {
 
     .modal-content h3 {
         font-size: 20px !important;
+    }
+
+    /* --- MOBILE NOTIFICATION TWEAK --- */
+    #custom-notification {
+        width: 95%;
+        /* Forces the box to stretch across the screen */
+        max-width: none;
+        /* Overrides the desktop limit */
+        padding: 12px 15px;
+        /* Slightly reduces side padding to give the text more room */
+        font-size: 14px;
+        /* Drops the font size just a hair for better fitting */
+        box-sizing: border-box;
+        /* Ensures the padding doesn't push it off-center */
     }
 }

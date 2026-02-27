@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="America 250 | PVP Productions">
+    <!-- <meta property="og:url" content="https://www.pranayvarada.com/pvp/america-250/"> -->
+    <meta property="og:url" content="https://www.pranayvarada.com/pvp/america-250-dev/">
+    <meta property="og:image" content="https://www.pranayvarada.com/pvp/images/america-250/america-250-map.png">
+    <meta property="og:description" content="250 years of American history in 250 events">
+    <meta property="article:author" content="Pranay Varada">
+    <meta property="article:published_time" content="2026-02-27T08:00-05:00">
+    <!-- <meta property="article:published_time" content="2026-03-02T08:00-05:00"> -->
+    <title>America 250</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="../../assets/mgweb_pvp.png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELB9NNSQXG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ELB9NNSQXG');
+    </script>
+</head>
+
+<body>
+
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <h3 style="font-family: 'Georgia', serif; color: #8b2621; letter-spacing: 2px; margin-top: 20px; text-align: center;">LOADING 250 YEARS
+            OF HISTORY...
+        </h3>
+    </div>
+
+    <div id="custom-notification"></div>
+
+    <header style="position: relative;"> <button id="info-btn" title="About this project">i</button>
+        <h1>
+            <span class="title-blue"><a href="/pvp/">PVP PRODUCTIONS</a>
+                <span class="title-pipe"> | </span>
+            </span>
+            <span class="title-red">AMERICA 250</span>
+        </h1>
+        <h2>250 YEARS OF AMERICAN HISTORY IN 250 EVENTS</h2>
+    </header>
+
+    <div id="controls-row">
+        <div id="search-panel">
+            <input type="number" id="year-input" placeholder="Year..." min="1776" max="2026">
+            <button id="search-btn">FIND</button>
+        </div>
+    
+        <div id="timeline-container">
+            <label for="timeline-slider" id="timeline-label">UP TO: <span id="timeline-year-display">2026</span></label>
+            <div class="slider-wrapper">
+                <input type="range" id="timeline-slider" min="1776" max="2026" value="2026">
+                <div class="slider-ticks">
+                    <span>1776</span>
+                    <span>1850</span>
+                    <span>1940</span>
+                    <span>2026</span>
+                </div>
+            </div>
+        </div>
+    
+        <button id="reset-btn">RESET VIEW</button>
+    </div>
+    
+    <div id="map-container"></div>
+    
+    <div id="tooltip"></div>
+
+    <div id="about-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="close-modal">&times;</span>
+            <h3 style="color: #8b2621; margin-top: 0; font-family: 'Barlow', sans-serif; letter-spacing: 1px; font-size: 24px;">WELCOME TO AMERICA 250
+            </h3>
+            <p>July 4, 2026 marks the United States' semiquincentennial: 250 years since the Declaration of Independence was ushered into the annals of history, giving birth to this great nation. To celebrate the anniversary, I created this interactive map of 250 events—one for each year from 1776 to 2025—that, together, tell the story of America <i>so far.</i></p>
+            <p>This is by no means an attempt to judge the 250 <i>most important</i> events in American history, though I did strive to include landmark events whenever possible. I had two core criteria:</p>
+            <ul>
+                <li>Each event must have a specific day and location within U.S. territory attached to it; and</li>
+                <li>Each U.S. state, as well as the District of Columbia and our Atlantic and Pacific territories, must be represented.</li>
+            </ul>
+            <p>You can use the timeline slider to rewind through the centuries, or search for a specific year to see its event.</p>
+            <p>America, here's to 250 more!</p>
+            <button id="start-btn"
+                style="margin-top: 15px; font-size: 14px; padding: 12px 24px; font-family: 'Barlow', sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; width: 100%;">Start
+                Exploring &rarr;
+            </button>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="https://docs.google.com/spreadsheets/d/17gK6mYmIf7VWpO1XPqRO006JjUUW1V8_imV38h8WCaY/edit?usp=sharing" target="_blank"
+                    style="color: #5c4738; font-size: 12px; font-family: 'Barlow', sans-serif; text-decoration: none; border-bottom: 1px dotted #5c4738;">
+                    Full data and credits
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://unpkg.com/d3-composite-projections@1.4.0/d3-composite-projections.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

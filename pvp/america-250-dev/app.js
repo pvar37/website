@@ -1,4 +1,3 @@
-// Set up dimensions
 const width = 960;
 const height = 600;
 
@@ -38,7 +37,6 @@ const zoom = d3.zoom()
 
 svg.call(zoom);
 
-// Prevent clicks inside the tooltip from bubbling up and closing it
 tooltip.on("click", (event) => event.stopPropagation());
 
 function hideTooltip() {
@@ -49,7 +47,7 @@ function hideTooltip() {
     }
 }
 
-// --- CUSTOM NOTIFICATION LOGIC ---
+// --- NOTIFICATION LOGIC ---
 let notificationTimeout;
 
 function showNotification(message) {
@@ -59,10 +57,8 @@ function showNotification(message) {
     notif.innerText = message;
     notif.classList.add("show");
 
-    // Clear any existing timeout so it doesn't fade out too early if they click twice
     clearTimeout(notificationTimeout);
 
-    // Automatically fade out after 4 seconds
     notificationTimeout = setTimeout(() => {
         notif.classList.remove("show");
     }, 4000);
@@ -122,7 +118,6 @@ function setOptimalTooltipPosition(pageX, pageY, clientX, clientY) {
         .style("opacity", 1);
 }
 
-// Keep tooltip open when mouse enters it
 if (!isMobile) {
     tooltip.on("mouseenter", () => {
         clearTimeout(tooltipTimeout);
@@ -135,7 +130,7 @@ if (!isMobile) {
     });
 }
 
-// --- NEW HELPER: Generates the full HTML for the tooltip universally ---
+// --- TOOLTIP HTML GENERATOR ---
 function generateTooltipHTML(eventData) {
     const allFeatures = window.eventsData.features;
     const currentIndex = allFeatures.findIndex(f => f.properties.year === eventData.properties.year);
@@ -145,7 +140,6 @@ function generateTooltipHTML(eventData) {
     const prevHtml = prevYear ? `<span class="nav-link" onclick="loadEvent(${prevYear})">&larr; ${prevYear}</span>` : `<span class="nav-link disabled">&larr; Prev</span>`;
     const nextHtml = nextYear ? `<span class="nav-link" onclick="loadEvent(${nextYear})">${nextYear} &rarr;</span>` : `<span class="nav-link disabled">Next &rarr;</span>`;
 
-    // --- NEW: Dynamic font sizes based on device ---
     const titleSize = isMobile ? '17px' : '16px';
     const metaSize = isMobile ? '14px' : '12px';
 
@@ -169,7 +163,6 @@ Promise.all([
     d3.json("events.geojson")
 ]).then(([us, eventsData]) => {
 
-    // Make data globally accessible immediately
     window.eventsData = eventsData;
 
     mapLayer.append("g")
@@ -249,7 +242,6 @@ Promise.all([
         })
         .on("click", function (event, d) {
             event.stopPropagation();
-            // On mobile, tapping the circle loads the bottom panel
             if (isMobile) {
                 window.loadEvent(d.properties.year, this);
             }
@@ -262,7 +254,6 @@ window.loadEvent = function (year, nodeElement = null) {
     const eventData = window.eventsData.features.find(f => f.properties.year === year);
     if (!eventData) return;
 
-    // Auto-advance timeline if hidden
     const slider = document.getElementById("timeline-slider");
     if (year > parseInt(slider.value)) {
         slider.value = year;
@@ -296,7 +287,6 @@ window.loadEvent = function (year, nodeElement = null) {
 
     const currentZoom = d3.zoomTransform(svg.node());
 
-    // Only smooth pan/reset if we navigated via search/buttons (meaning nodeElement wasn't passed via click)
     if (!nodeElement && (currentZoom.k !== 1 || currentZoom.x !== 0 || currentZoom.y !== 0)) {
         svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity).on("end", showTooltipAndHighlight);
     } else {
@@ -356,28 +346,22 @@ d3.select("#timeline-slider").on("input", function () {
     }
 });
 
-// --- MODAL & SPLASH SCREEN LOGIC ---
+// --- MODAL LOGIC ---
 const modal = document.getElementById("about-modal");
 const infoBtn = document.getElementById("info-btn");
 const closeBtn = document.getElementById("close-modal");
 const startBtn = document.getElementById("start-btn");
 
-// 1. Check Local Storage on Page Load
-// If they have NOT visited before, remove the "hidden" class to show the splash screen
 if (!localStorage.getItem("america250_visited")) {
     modal.classList.remove("hidden");
 }
 
-// 2. Helper function to close modal AND save to local storage
 function closeAndSave() {
     modal.classList.add("hidden");
-    // This leaves a permanent "cookie" in their browser so it never auto-opens again
     localStorage.setItem("america250_visited", "true");
 }
 
-// 3. Event Listeners
 if (infoBtn) {
-    // If they manually click the info button, just open it (don't mess with storage)
     infoBtn.addEventListener("click", () => modal.classList.remove("hidden"));
 }
 

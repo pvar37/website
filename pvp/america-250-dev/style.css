@@ -29,8 +29,8 @@ h1 {
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
 
-/* Vintage Patriotic Theme for Header */
-.title-blue, .title-blue a {
+.title-blue,
+.title-blue a {
     color: #1b264f;
     font-family: 'Barlow', sans-serif;
     letter-spacing: 2px;
@@ -43,17 +43,13 @@ h1 {
     margin: 0 5px;
 }
 
-/* Deep vintage navy */
 .title-red {
     color: #8b2621;
 }
 
-/* Faded rust red */
 .title-white {
     color: #fcf6eb;
-    /* Ivory/Cream to act as the "white" */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    /* Shadow helps it pop off the parchment */
     margin: 0 10px;
 }
 
@@ -70,20 +66,15 @@ h2 {
     width: 100%;
     max-width: 1200px;
     height: 65vh;
-    /* Prevents the map from expanding past the screen bottom */
     min-height: 400px;
-    /* Ensures it doesn't get too small on short screens */
     margin: 10px auto;
     border: 1px solid rgba(92, 71, 56, 0.3);
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
     background: rgba(255, 255, 255, 0.05);
-    /* Slight lightening for the canvas */
     overflow: hidden;
-    /* Clips anything that tries to zoom outside the box */
     border-radius: 4px;
 }
 
-/* Forces the SVG to conform to the container */
 #map-container svg {
     width: 100%;
     height: 100%;
@@ -127,9 +118,9 @@ button:hover {
     background-color: #3a2a18;
 }
 
+/* --- TOOLTIP --- */
 #tooltip {
     position: absolute;
-    /* Make sure there are no !important mobile overrides interfering */
     opacity: 0;
     visibility: hidden;
     background:
@@ -140,15 +131,12 @@ button:hover {
     pointer-events: auto;
     border-radius: 2px;
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
-
-    /* THE FIX: Hardcode the width so it never squishes/reflows text */
     width: 300px;
     z-index: 10;
 }
 
 .tooltip-img {
     width: 100%;
-    /* THE FIX: Hardcode the height so JavaScript always knows how tall the box is before the image loads */
     height: 160px;
     object-fit: cover;
     margin: 10px 0;
@@ -164,14 +152,13 @@ button:hover {
     color: #2c241b;
 }
 
-/* --- COMBINED TIMELINE & COLOR SCALE SLIDER --- */
+/* --- TIMELINE SLIDER --- */
 #timeline-container {
     width: 100%;
     max-width: 350px;
     text-align: center;
     font-family: 'Barlow', sans-serif;
     justify-self: center;
-    /* Keeps it centered in the grid */
 }
 
 #timeline-label {
@@ -192,10 +179,8 @@ button:hover {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    /* The Magic: CSS gradient exactly matching your D3 Color Scale */
     background: linear-gradient(to right, #cbb682 0%, #b05f4e 30%, #6b4c64 66%, #253494 100%);
     height: 12px;
-    /* Taller to act as a proper legend */
     border-radius: 3px;
     outline: none;
     border: 1px solid #5c4738;
@@ -209,10 +194,8 @@ button:hover {
     font-size: 11px;
     color: #5c4738;
     padding: 0 4px;
-    /* Keeps text aligned with the edge of the track */
 }
 
-/* Customizing the draggable "thumb" */
 #timeline-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -220,7 +203,6 @@ button:hover {
     height: 20px;
     border-radius: 50%;
     background: #f4ebd8;
-    /* Parchment color */
     cursor: pointer;
     border: 2px solid #3a2a18;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -272,9 +254,7 @@ button:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(27, 38, 79, 0.4);
-    /* Vintage navy overlay */
     backdrop-filter: blur(3px);
-    /* Slightly blurs the map behind it */
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -342,9 +322,7 @@ button:hover {
     width: 50px;
     height: 50px;
     border: 4px solid rgba(139, 38, 33, 0.2);
-    /* Faded red */
     border-top-color: #8b2621;
-    /* Solid red spinner */
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -385,16 +363,14 @@ button:hover {
     pointer-events: none;
 }
 
-/* --- CUSTOM NOTIFICATION TOAST --- */
+/* --- NOTIFICATION TOAST --- */
 #custom-notification {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(-10px);
     background-color: #8b2621;
-    /* Matches your header red */
     color: #ebdcb7;
-    /* Parchment color */
     padding: 12px 24px;
     border-radius: 4px;
     font-family: 'Barlow', sans-serif;
@@ -408,20 +384,17 @@ button:hover {
     text-align: center;
     max-width: 90%;
     pointer-events: none;
-    /* Lets users click "through" it if necessary */
 }
 
-/* The class we will add via JavaScript to animate it in */
 #custom-notification.show {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-/* --- MOBILE RESPONSIVENESS (APP-LIKE UX) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
 
-    /* Lock the body to prevent the whole page from bouncing around */
     body,
     html {
         height: 100%;
@@ -430,29 +403,24 @@ button:hover {
         flex-direction: column;
     }
 
-    /* 1. Ultra-compact Header */
     header {
         padding: 15px 5px 10px 5px;
-        /* Increased top padding to 15px */
         border-bottom: 2px solid #5c4738;
         flex-shrink: 0;
     }
 
     .title-pipe {
         display: none;
-        /* Hides the pipe on small screens */
     }
 
     .title-blue,
     .title-red {
         display: block;
-        /* Forces them onto their own separate lines */
         line-height: 1.15;
     }
 
     .title-blue {
         margin-bottom: 4px;
-        /* <-- ADD THIS: Creates breathing room between the lines */
     }
 
     h1 {
@@ -463,12 +431,10 @@ button:hover {
 
     h2 {
         font-size: 12px;
-        /* Increased from 10px */
         margin-top: 6px;
         letter-spacing: 0.5px;
     }
 
-    /* Shrink the info button and tuck it into the corner */
     #info-btn {
         top: 8px;
         right: 8px;
@@ -477,56 +443,43 @@ button:hover {
         font-size: 13px;
     }
 
-    /* 2. Structured Controls (Reordered Layout) */
     #controls-row {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         padding: 10px 15px 5px 15px;
-        /* <--- Changed the 3rd number (bottom padding) to 5px */
         margin-bottom: 0;
-        /* <--- Overrides the desktop 25px gap */
         gap: 15px 0;
         flex-shrink: 0;
     }
 
-    /* Top Row (Left): Search */
     #search-panel {
         order: 1;
-        /* Forces to the top left */
         display: flex;
         gap: 10px;
-        /* Space between input and Find button */
     }
 
-    /* Top Row (Right): Reset Button */
     #reset-btn {
         order: 2;
-        /* Pulls it up past the timeline */
     }
 
-    /* Bottom Row: Slider */
     #timeline-container {
         order: 3;
-        /* Pushes it to the bottom */
         width: 100%;
         max-width: 100%;
     }
 
-    /* Bigger Touch Targets for Mobile */
     input[type="number"],
     button {
         padding: 10px 15px;
         font-size: 14px;
     }
 
-    /* Inside your @media (max-width: 768px) block */
     input[type="number"] {
         width: 40px;
     }
 
-    /* Enlarge the slider thumb for thumbs! */
     #timeline-slider::-webkit-slider-thumb {
         width: 26px;
         height: 26px;
@@ -537,10 +490,8 @@ button:hover {
         height: 26px;
     }
 
-    /* 3. The Map Container (Fills middle space) */
     #map-container {
         flex-grow: 1;
-        /* Takes up all remaining space between controls and tooltip */
         height: auto !important;
         min-height: 0 !important;
         margin: 0;
@@ -552,7 +503,6 @@ button:hover {
         width: 100%;
     }
 
-    /* 4. The Permanent Scrollable Bottom Panel */
     #tooltip {
         position: relative !important;
         top: auto !important;
@@ -560,30 +510,21 @@ button:hover {
         transform: none !important;
         width: 100% !important;
         box-sizing: border-box !important;
-
-        /* Fixed height bottom sheet */
         height: 35vh;
         min-height: 250px;
         overflow-y: auto;
-        /* Lets user scroll long descriptions inside the panel */
-
         padding: 15px;
         margin: 0 !important;
         border: none;
         border-top: 2px dashed #8c7355;
         background: rgba(244, 235, 216, 0.95);
-        /* Slightly opaque to hide map peeking underneath */
         box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.05);
-
         flex-shrink: 0;
-
-        /* Instead of hiding entirely, we fade it to a placeholder state */
         visibility: visible !important;
         opacity: 1 !important;
         transition: background-color 0.3s ease;
     }
 
-    /* A pseudo-element to show a placeholder when empty */
     #tooltip:empty::before {
         content: "Tap an event on the map or use the timeline to explore...";
         display: block;
@@ -598,22 +539,17 @@ button:hover {
         height: 140px;
         margin-bottom: 10px;
     }
-    
+
     .modal-content {
         padding: 20px;
-        /* Reduces the bulky 30px desktop padding */
         max-height: 85vh;
-        /* Prevents the box from ever being taller than the screen */
         overflow-y: auto;
-        /* Adds an internal scrollbar if the screen is super tiny */
     }
 
     .modal-content p,
     .modal-content ul {
         font-size: 14px;
-        /* Drops from default 16px */
         line-height: 1.5;
-        /* Tighter line spacing */
         margin-bottom: 12px;
     }
 
@@ -621,17 +557,11 @@ button:hover {
         font-size: 20px !important;
     }
 
-    /* --- MOBILE NOTIFICATION TWEAK --- */
     #custom-notification {
         width: 95%;
-        /* Forces the box to stretch across the screen */
         max-width: none;
-        /* Overrides the desktop limit */
         padding: 12px 15px;
-        /* Slightly reduces side padding to give the text more room */
         font-size: 14px;
-        /* Drops the font size just a hair for better fitting */
         box-sizing: border-box;
-        /* Ensures the padding doesn't push it off-center */
     }
 }

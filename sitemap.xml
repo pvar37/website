@@ -49,13 +49,20 @@
     <!-- PVP Productions -->
     <url>
         <loc>https://www.pranayvarada.com/pvp/</loc>
-        <lastmod>2026-03-02</lastmod>
+        <lastmod>2026-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://www.pranayvarada.com/pvp/speedrunning-boston/</loc>
+        <loc>https://www.pranayvarada.com/pvp/predicting-the-2026-world-cup/</loc>
+        <lastmod>2026-06-10</lastmod>
+        <changefreq>never</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://www.pranayvarada.com/pvp/america-250/</loc>
         <lastmod>2026-03-02</lastmod>
         <changefreq>never</changefreq>
         <priority>1.0</priority>
